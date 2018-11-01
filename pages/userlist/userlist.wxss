@@ -1,0 +1,18 @@
+/* pages/userlist/userlist.wxss */
+
+page {
+  background-color: #F7F7F9;
+  
+}
+
+.btn {
+  width: 50px;
+  height: 27px;
+  font-size: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: #E48443;
+  
+  
+  
+}
