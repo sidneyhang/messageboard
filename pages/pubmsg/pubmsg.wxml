@@ -12,10 +12,31 @@
 
 
 <view class="section" wx:if="{{currentTab == 1}}">
-  <textarea bindblur="bindTextAreaBlur" style='width:100%; height: 300px; background-color: white; font-size: 15px; padding: 15px 15px;' placeholder="消耗一朵花留言，说你想说的..." />
+  <textarea bindblur="bindTextAreaBlur" style='width:100%; height: 200px; background-color: white; font-size: 15px; padding: 15px 15px; box-sizing: border-box;' placeholder="消耗一朵花留言，说你想说的..." />
 </view>
 
 <view class="section" style="height: 44px; margin-top: 5px; display: flex; align-items: center; justify-content: space-between; padding: 0 13px;">
   <text>设定对方查看该留言需要消耗的花</text>
   <text>900朵 ></text>
+</view>
+
+<view class="section" style="margin-top: 10rpx; padding: 62rpx; ">
+<button style='background-color: #E48443; color: white;'>确认留言</button>
+<scroll-view scroll-y style="height: 340rpx; margin-top: 68rpx;color: #C5CCDB; font-size: 26rpx">
+<view style=''>
+<text>历史留言表白</text></view>
+
+
+<view><text>1 今天12:35 您对会飞的鱼发表了[想要你表白] 剩余13分钟</text></view>
+
+<view><text>2 今天12:35 您对会飞的鱼发表了[想要你表白] 剩余59分钟</text></view>
+
+<view><text>3 今天12:35 您对会飞的鱼发表了[想要你表白] 剩余1240分钟</text></view>
+
+<view><text>3 今天12:35 您对会飞的鱼发表了[想要你表白] 剩余1240分钟</text></view>
+<view><text>3 今天12:35 您对会飞的鱼发表了[想要你表白] 剩余1240分钟</text></view>
+<view><text>3 今天12:35 您对会飞的鱼发表了[想要你表白] 剩余1240分钟</text></view>
+<view><text>3 今天12:35 您对会飞的鱼发表了[想要你表白] 剩余1240分钟</text></view>
+</scroll-view>
+
 </view>
