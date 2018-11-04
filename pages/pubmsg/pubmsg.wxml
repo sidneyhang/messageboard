@@ -21,7 +21,7 @@
 </view>
 
 <view class="section" style="margin-top: 10rpx; padding: 62rpx; ">
-<button style='background-color: #E48443; color: white;'>确认留言</button>
+<button style='background-color: #E48443; color: white;' bindtap='publishMsg'>确认留言</button>
 <scroll-view scroll-y style="height: 340rpx; margin-top: 68rpx;color: #C5CCDB; font-size: 26rpx">
 <view style=''>
 <text>历史留言表白</text></view>

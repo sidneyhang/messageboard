@@ -1,0 +1,63 @@
+<!--pages/message/message.wxml-->
+<view class="navigator">
+  <view class="tab {{currentTab == 1 ? 'active': ''}}" data-idx="1" bindtap='changeTab'>
+    <text>表白提醒</text>
+    <view class='line'></view>
+  </view>
+  <view class="tab {{currentTab == 2 ? 'active': ''}}" data-idx="2" bindtap='changeTab'>
+    <text>即使匹配</text>
+    <view class='line'></view>
+  </view>
+</view>
+
+<view class="section" wx:if="{{currentTab == 1}}">
+  <view class="item">
+    <view style="display: flex">
+      <image style='width: 72rpx; height: 72rpx; background-color: #000'></image>
+      <view style="display: flex; flex-direction: column; margin-left: 18rpx; justify-content: space-between;">
+        <text style="font-size: 26rpx">今天12:00有人向你发起了表白【想要你】</text>
+        <text style="font-size: 20rpx; color: #C3C3D0">对方设置需要消耗花*10查看该表白</text>
+      </view>
+    </view>
+    <view>
+      <button style="width: 100rpx; height: 54rpx; font-size: 20rpx; background-color: #E48443; color: white; padding-left: 10rpx; padding-right: 10rpx">去查看</button>
+    </view>
+  </view>
+  <view class="item">
+
+    <view style="display: flex">
+      <image style='width: 72rpx; height: 72rpx; background-color: #000'></image>
+      <view style="display: flex; flex-direction: column; margin-left: 18rpx; justify-content: space-between;">
+        <text style="font-size: 26rpx">今天12:00有人向你发起了表白【想要你】</text>
+        <text style="font-size: 20rpx; color: #C3C3D0">对方设置需要消耗花*10查看该表白</text>
+      </view>
+    </view>
+    <view>
+      <button style="width: 100rpx; height: 54rpx; font-size: 20rpx; background-color: #E48443; color: white; padding-left: 10rpx; padding-right: 10rpx">去查看</button>
+    </view>
+
+  </view>
+
+
+</view>
+
+<view class="section" wx:if="{{currentTab == 2}}">
+  <view class="item">
+    <view style="display: flex">
+      <image style='width: 72rpx; height: 72rpx; background-color: #000'></image>
+      <view style="display: flex; flex-direction: column; margin-left: 18rpx; justify-content: space-between;">
+        <text style="font-size: 26rpx">今天12:00</text>
+        <text style="font-size: 20rpx; color: #C3C3D0">欧阳苗苗 在同一时间段向你发起了表白[喜欢你]</text>
+      </view>
+    </view>
+    <view>
+      <button style="width: 100rpx; height: 54rpx; font-size: 20rpx; background-color: #E48443; color: white; padding-left: 10rpx; padding-right: 10rpx">免费查看</button>
+    </view>
+  </view>
+</view>
+
+
+<view style="display: flex; flex-direction: column; justify-content: center; width: 304rpx; height: 360rpx">
+  <image src="http://imgs.jinxiaoersh.com/RhYHpQmQsyY6neb6xB.png" style="width: 304rpx; height: 342rpx"></image>
+  <text style="color: #c6cace; text-align: center">还没有消息哦~</text>
+</view>

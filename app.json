@@ -4,7 +4,9 @@
     "pages/logs/logs",
     "pages/my/my",
     "pages/userlist/userlist",
-    "pages/pubmsg/pubmsg"
+    "pages/pubmsg/pubmsg",
+    "pages/pubsuccess/pubsuccess",
+    "pages/message/message"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -26,7 +28,7 @@
       {
         "selectedIconPath": "assets/images/icon-message-green.png",
         "iconPath": "assets/images/icon-message.png",
-        "pagePath": "pages/logs/logs",
+        "pagePath": "pages/message/message",
         "text": "消息"
       },
       {

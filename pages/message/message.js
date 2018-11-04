@@ -1,4 +1,4 @@
-// pages/pubmsg/pubmsg.js
+// pages/message/message.js
 Page({
 
   /**
@@ -8,16 +8,10 @@ Page({
     currentTab: 1
   },
 
-  changeTab: function(e) {
+  changeTab: function (e) {
     var that = this;
     that.setData({
       currentTab: e.currentTarget.dataset.idx
-    })
-  },
-
-  publishMsg: function() {
-    wx.navigateTo({
-      url: '/pages/pubsuccess/pubsuccess',
     })
   },
 
