@@ -1,4 +1,36 @@
 <!--pages/my/my.wxml-->
-<button bindtap='start'>开始录音</button>  
-<button bindtap='play'>播放录音</button>  
-<button bindtap='stop'>停止录音</button>
+<view class="section head">
+  <view class="avatar-name">
+    <image src=""></image>
+    <text>我是用户名</text>
+  </view>
+
+  <view class="egg-flower">
+    <view class="box">
+      <image></image>
+      <text>30朵</text>
+    </view>
+    <view class="box">
+      <image></image>
+      <text>20颗</text>
+    </view>
+  </view>
+</view>
+
+<view class="section item">
+  <view>
+    <image></image>
+  </view>
+  <view>
+    <text>去充值 ></text>
+  </view>
+</view>
+
+<view class="section item">
+  <view>
+    <image></image>
+  </view>
+  <view>
+    <text>签到送花送蛋 ></text>
+  </view>
+</view>

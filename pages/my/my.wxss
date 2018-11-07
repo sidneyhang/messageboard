@@ -1,1 +1,67 @@
 /* pages/my/my.wxss */
+
+page {
+  background-color: #f7f7f9;
+}
+
+.section {
+  background-color: white;
+  margin-bottom: 22rpx;
+}
+
+.avatar-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar-name image {
+  width: 126rpx;
+  height: 126rpx;
+  background-color: #000;
+}
+
+.avatar-name text {
+  margin-top: 14rpx;
+}
+
+.egg-flower {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 46rpx;
+  padding-bottom: 38rpx;
+}
+
+.egg-flower .box {
+  display: flex;
+  flex-direction: column;
+}
+
+.egg-flower .box text {
+  font-size: 26rpx;
+}
+
+.egg-flower .box image {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.item {
+  height: 100rpx;
+  padding: 0 22rpx 0 46rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item text {
+  font-size: 26rpx;
+  color: #BABCC3;
+}
+
+.item image {
+  background-color: black;
+  width: 54rpx;
+  height: 54rpx;
+}
