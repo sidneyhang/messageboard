@@ -6,7 +6,8 @@
     "pages/userlist/userlist",
     "pages/pubmsg/pubmsg",
     "pages/pubsuccess/pubsuccess",
-    "pages/message/message"
+    "pages/message/message",
+    "pages/ranklist/ranklist"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -34,7 +35,7 @@
       {
         "selectedIconPath": "assets/images/icon-user-green.png",
         "iconPath": "assets/images/icon-user.png",
-        "pagePath": "pages/my/my",
+        "pagePath": "pages/ranklist/ranklist",
         "text": "排行榜"
       },
       {

@@ -1,0 +1,99 @@
+/* pages/ranklist/ranklist.wxss */
+
+page {
+  background-color: #f7f7f9;
+  font-size: 15px;
+}
+
+.section {
+  background-color: white;
+}
+
+.navigator {
+  height: 30px;
+  display: flex;
+  background-color: white;
+}
+
+.navigator .tab {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.navigator .tab text {
+  font-size: 15px;
+}
+
+.navigator .tab .line {
+  height: 4px;
+  margin-top: 4px;
+}
+
+.navigator .active text {
+  color: #e48443;
+}
+
+.navigator .active view {
+  width: 60px;
+  background-color: #e48443;
+}
+
+.time {
+  height: 120rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.time .btn {
+  width: 100rpx;
+  height: 54rpx;
+  border-radius:10rpx;
+  background-color: #E1DFDE;
+  color: white;
+  font-size: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.time .active {
+  background-color: #E48443;  
+}
+
+.user-list {
+
+}
+
+.user-list .item {
+  height: 155rpx;
+  background-color: white;
+  margin-bottom: 10rpx;
+  padding-left: 54rpx;
+  padding-right: 35rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-list .item image {
+  width: 95rpx;
+  height: 95rpx;
+  background-color: black;
+  margin-left: 30rpx;
+}
+
+.user-list .item .left {
+  display: flex;
+  align-items: center;
+}
+
+.user-list .item .left .name {
+  margin-left: 17rpx;
+}
+
+.user-list .item .right {
+  color: #E48443;
+}

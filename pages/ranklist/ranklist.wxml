@@ -1,0 +1,42 @@
+<!--pages/ranklist/ranklist.wxml-->
+<view class="navigator">
+  <view class="tab {{currentTab == 1 ? 'active': ''}}" data-idx="1" bindtap='changeTab'>
+    <text>花排行榜</text>
+    <view class='line'></view>
+  </view>
+  <view class="tab {{currentTab == 2 ? 'active': ''}}" data-idx="2" bindtap='changeTab'>
+    <text>蛋排行榜</text>
+    <view class='line'></view>
+  </view>
+</view>
+
+<view class="section time">
+  <view class="btn {{currentTime == 1 ? 'active': ''}}" data-idx="1" bindtap="changeTime">今日</view>
+  <view class="btn {{currentTime == 2 ? 'active': ''}}" data-idx="2" bindtap="changeTime">本周</view>
+  <view class="btn {{currentTime == 3 ? 'active': ''}}" data-idx="3" bindtap="changeTime">本月</view>
+  <view class="btn {{currentTime == 4 ? 'active': ''}}" data-idx="4" bindtap="changeTime">土豪榜</view>
+</view>
+
+<view class="user-list">
+  <view class="item">
+    <view class="left">
+      <text>1</text>
+      <image></image>
+      <text class="name">李开复</text>
+    </view>
+    <view class="right">
+      <text>鲜花X5000</text>
+    </view>
+  </view>
+
+  <view class="item">
+    <view class="left">
+      <text>1</text>
+      <image></image>
+      <text class="name">李开复</text>
+    </view>
+    <view class="right">
+      <text>鲜花X5000</text>
+    </view>
+  </view>
+</view>
