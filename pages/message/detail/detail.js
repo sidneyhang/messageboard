@@ -1,24 +1,11 @@
-// pages/message/message.js
+// pages/message/detail/detail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    currentTab: 1
-  },
 
-  changeTab: function (e) {
-    var that = this;
-    that.setData({
-      currentTab: e.currentTarget.dataset.idx
-    })
-  },
-
-  toDetail: function() {
-    wx.navigateTo({
-      url: '/pages/message/detail/detail',
-    })
   },
 
   /**

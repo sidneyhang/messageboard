@@ -1,0 +1,21 @@
+<!--pages/message/detail/detail.wxml-->
+<view class="section">
+  <view class="title">
+    <image class="avatar"></image>
+    <view class="name-box">
+      <view class="name">
+        <text>张三 向你发起了表白[想要你]</text>
+      </view>
+      <view class="time">
+        <text>12: 30</text>
+      </view>
+    </view>
+  </view>
+  <view class="content">
+    <text>
+    你知道吗？这个时候我也希望你同时在表白，有些话 \n
+  我不能直接和你说，但是我希望你明白，一切为了部落！
+  </text>
+    <text></text>
+  </view>
+</view>

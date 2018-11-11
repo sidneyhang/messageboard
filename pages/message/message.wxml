@@ -20,7 +20,7 @@
       </view>
     </view>
     <view>
-      <button style="width: 100rpx; height: 54rpx; font-size: 20rpx; background-color: #E48443; color: white; padding-left: 10rpx; padding-right: 10rpx">去查看</button>
+      <button style="width: 100rpx; height: 54rpx; font-size: 20rpx; background-color: #E48443; color: white; padding-left: 10rpx; padding-right: 10rpx" bindtap="toDetail">去查看</button>
     </view>
   </view>
   <view class="item">
@@ -51,7 +51,7 @@
       </view>
     </view>
     <view>
-      <button style="width: 100rpx; height: 54rpx; font-size: 20rpx; background-color: #E48443; color: white; padding-left: 10rpx; padding-right: 10rpx">免费查看</button>
+      <button style="width: 100rpx; height: 54rpx; font-size: 20rpx; background-color: #E48443; color: white; padding-left: 10rpx; padding-right: 10rpx" bindtap="toDetail">免费查看</button>
     </view>
   </view>
 </view>

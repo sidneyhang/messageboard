@@ -7,7 +7,9 @@
     "pages/pubmsg/pubmsg",
     "pages/pubsuccess/pubsuccess",
     "pages/message/message",
-    "pages/ranklist/ranklist"
+    "pages/ranklist/ranklist",
+    "pages/my/pay/pay",
+    "pages/message/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

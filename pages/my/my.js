@@ -24,6 +24,12 @@ Page({
 
   },
 
+  toPay: function() {
+    wx.navigateTo({
+      url: '/pages/my/pay/pay',
+    })
+  },
+
   play: function() {
     console.log(voice);
     //播放声音文件  

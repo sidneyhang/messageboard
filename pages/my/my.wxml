@@ -17,7 +17,7 @@
   </view>
 </view>
 
-<view class="section item">
+<view class="section item" bindtap="toPay">
   <view>
     <image></image>
   </view>

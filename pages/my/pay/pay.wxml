@@ -1,0 +1,40 @@
+<!--pages/my/pay/pay.wxml-->
+<view class="section">
+  <text class="header">充值花</text>
+  <view class="box">
+    <view class="price-box">
+      <text class="buds-number">1朵花</text>
+      <text class="price">售价1元</text>
+    </view>
+
+    <view class="price-box">
+      <text class="buds-number">10朵花</text>
+      <text class="price">售价10元</text>
+    </view>
+
+    <view class="price-box">
+      <text class="buds-number">100朵花</text>
+      <text class="price">售价100元</text>
+    </view>
+  </view>
+</view>
+
+<view class="section">
+  <text class="header">充值蛋</text>
+  <view class="box">
+    <view class="price-box">
+      <text class="buds-number">1朵蛋</text>
+      <text class="price">售价1元</text>
+    </view>
+
+    <view class="price-box">
+      <text class="buds-number">10朵蛋</text>
+      <text class="price">售价10元</text>
+    </view>
+
+    <view class="price-box">
+      <text class="buds-number">100朵蛋</text>
+      <text class="price">售价100元</text>
+    </view>
+  </view>
+</view>

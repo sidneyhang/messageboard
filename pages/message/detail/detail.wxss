@@ -1,0 +1,34 @@
+/* pages/message/detail/detail.wxss */
+
+page {
+  font-size: 25rpx;
+}
+
+.section {
+  padding: 0 30rpx;
+}
+
+.title {
+  display: flex;
+}
+
+.time {
+  color: #cbcdd6;
+}
+
+.avatar {
+  width: 71rpx;
+  height: 71rpx;
+  background-color: black;
+}
+
+.name-box {
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.content {
+  padding-left: 50rpx;
+}
