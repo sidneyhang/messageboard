@@ -9,7 +9,8 @@
     "pages/message/message",
     "pages/ranklist/ranklist",
     "pages/my/pay/pay",
-    "pages/message/detail/detail"
+    "pages/message/detail/detail",
+    "pages/login/login"
   ],
   "window": {
     "backgroundTextStyle": "light",
