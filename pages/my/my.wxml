@@ -1,8 +1,8 @@
 <!--pages/my/my.wxml-->
 <view class="section head">
   <view class="avatar-name">
-    <image src=""></image>
-    <text>我是用户名</text>
+    <image src="{{ avatarUrl }}"></image>
+    <text>{{nickName}}</text>
   </view>
 
   <view class="egg-flower">

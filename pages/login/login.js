@@ -4,49 +4,37 @@ Page({
     //判断小程序的API，回调，参数，组件等是否在当前版本可用。
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
-  onLoad: function () {
+  onLoad: function() {
     var that = this;
-    // 查看是否授权
-    wx.getSetting({
-      success: function (res) {
-        if (res.authSetting['scope.userInfo']) {
-          wx.getUserInfo({
-            success: function (res) {
-              //从数据库获取用户信息
-              that.queryUsreInfo();
-              //用户已经授权过
-              wx.switchTab({
-                url: ''
-              })
-            }
-          });
-        }
-      }
-    })
+
   },
-  bindGetUserInfo: function (e) {
+  bindGetUserInfo: function(e) {
     console.log(e.detail);
+    console.log(getApp().globalData);
     if (e.detail.userInfo) {
       //用户按了允许授权按钮
       var that = this;
-      console.log(e.detail.userInfo);
       //插入登录的用户的相关信息到数据库
       wx.request({
-        url: getApp().globalData.urlPath + '/user',
+        url: getApp().globalData.urlPath + '/register',
         method: "POST",
         data: {
-          openid: getApp().globalData.openid,
+          code: getApp().globalData.code,
           nickName: e.detail.userInfo.nickName,
           avatarUrl: e.detail.userInfo.avatarUrl
         },
-        success: function (res) {
+        success: function(res) {
           //从数据库获取用户信息
-          // that.queryUsreInfo();
+          console.log(res);
+          var data = res.data;
+          if (data.code === 200) {
+            getApp().globalData.openid = data.data.openid;
+          }
+          that.queryUsreInfo();
           console.log("插入小程序登录用户信息成功！");
-          //授权成功后，跳转进入小程序首页
-          
         }
       });
+
       wx.switchTab({
         url: '/pages/index/index'
       })
@@ -57,7 +45,7 @@ Page({
         content: '您点击了拒绝授权，将无法进入小程序，请授权之后再进入!!!',
         showCancel: false,
         confirmText: '返回授权',
-        success: function (res) {
+        success: function(res) {
           if (res.confirm) {
             console.log('用户点击了“返回授权”')
           }
@@ -66,18 +54,22 @@ Page({
     }
   },
   //获取用户信息接口
-  queryUsreInfo: function () {
+  queryUsreInfo: function() {
+    console.log(getApp().globalData);
     wx.request({
-      url: getApp().globalData.urlPath + 'hstc_interface/queryByOpenid',
+      url: getApp().globalData.urlPath + '/login/userinfo',
+      method: "POST",
       data: {
-        openid: getApp().globalData.openid
+        openId: getApp().globalData.openid
       },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
+      success: function(res) {
         console.log(res.data);
-        getApp().globalData.userInfo = res.data;
+        var data = res.data;
+        if (data.code === 200) {
+          getApp().globalData.access_token = data.data.access_token;
+          wx.setStorageSync("userInfo", data.data.userInfo);
+        }
+        console.log(getApp().globalData);
       }
     });
   },
