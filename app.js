@@ -2,9 +2,9 @@
 App({
   onLaunch: function() {
     // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    // var logs = wx.getStorageSync('logs') || []
+    // logs.unshift(Date.now())
+    // wx.setStorageSync('logs', logs)
 
     var that = this;
 
@@ -107,6 +107,6 @@ App({
     openid: 0,
     wx_url_1: 'https://api.weixin.qq.com/sns/jscode2session?appid=wxa30da721db587413&secret=68bcec49a3919e51521c9c02a1fcdba2&js_code=',
     wx_url_2: '&grant_type=authorization_code',
-    urlPath: 'http://localhost:9000/expresslove/api/v1'
+    urlPath: 'http://192.168.31.107:9000/expresslove/api/v1'
   }
 })

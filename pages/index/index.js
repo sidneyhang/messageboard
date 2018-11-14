@@ -4,13 +4,18 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    // motto: 'Hello World',
+    // userInfo: {},
+    // hasUserInfo: false,
+    // canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
 
-  toUserList: function() {
+  toUserList: function(e) {
+    var category = e.currentTarget.dataset.category;
+    console.log(category);
+
+    wx.setStorageSync("category", category);
+
     wx.navigateTo({
       url: '/pages/userlist/userlist',
     })
@@ -45,7 +50,6 @@ Page({
     }
   },
   getUserInfo: function(e) {
-    console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,

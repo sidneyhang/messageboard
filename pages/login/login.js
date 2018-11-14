@@ -24,7 +24,6 @@ Page({
           avatarUrl: e.detail.userInfo.avatarUrl
         },
         success: function(res) {
-          //从数据库获取用户信息
           console.log(res);
           var data = res.data;
           if (data.code === 200) {
