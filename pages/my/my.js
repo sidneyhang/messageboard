@@ -12,10 +12,18 @@ Page({
 
   onLoad: function() {
     var userInfo = wx.getStorageSync("userInfo");
-    this.data.avatarUrl = userInfo.avatarUrl;
-    this.data.nickName = userInfo.nickName;
-
+    var that = this;
+    that.setData({
+      avatarUrl: userInfo.avatarUrl,
+      nickName: userInfo.nickName
+    })
     console.log(this.data);
+  },
+
+  toPay: function() {
+    wx.navigateTo({
+      url: '/pages/my/pay/pay',
+    })
   }
 
 
