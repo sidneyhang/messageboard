@@ -1,12 +1,15 @@
 <!--pages/userlist/userlist.wxml-->
-<view style=''>
-  <view style="height: 70px; margin-bottom: 5px; background-color: white; display: flex; padding: 0 15px; justify-content: space-between;" wx:for="{{friends}}">
+<view class="section">
+  <view class="item" wx:for="{{friends}}">
+
     <view style='display: flex; align-items: center'>
-      <image style='width: 36px; height: 36px; background-color: #000' src="{{item.avatarUrl}}"></image>
-      <text style='font-size: 13px; margin-left: 8px'>{{item.nickName}}</text>
+      <image class="avatar" src="{{item.avatarUrl}}"></image>
+      <text class="name">{{item.nickName}}</text>
     </view>
+
     <view style='display: flex; align-items: center'>
       <button type="primary" class='btn' data-userId="{{item.id}}" bindtap='toPubMsg'> 去留言 </button>
     </view>
+
   </view>
 </view>

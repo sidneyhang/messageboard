@@ -1,18 +1,34 @@
 /* pages/userlist/userlist.wxss */
 
 page {
-  background-color: #F7F7F9;
-  
+  background-color: #f7f7f9;
 }
 
 .btn {
-  width: 50px;
-  height: 27px;
-  font-size: 10px;
-  padding-left: 5px;
-  padding-right: 5px;
-  background-color: #E48443;
-  
-  
-  
+  width: 100rpx;
+  height: 54rpx;
+  font-size: 20rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  background-color: #e48443;
+}
+
+.item {
+  height: 140rpx;
+  margin-bottom: 10rpx;
+  background-color: white;
+  display: flex;
+  padding: 0 30rpx;
+  justify-content: space-between;
+}
+
+.item .avatar {
+  width: 72rpx;
+  height: 72rpx;
+  background-color: #000;
+}
+
+.item .name {
+  font-size: 26rpx;
+  margin-left: 16rpx;
 }
