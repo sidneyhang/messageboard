@@ -1,79 +1,146 @@
 // pages/message/message.js
+
+var app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    currentTab: 1
+    currentTab: 1,
+    messages: {},
+    audioMsg: {}
   },
 
-  changeTab: function (e) {
+  changeTab: function(e) {
     var that = this;
+    var currentTab = e.currentTarget.dataset.idx;
     that.setData({
-      currentTab: e.currentTarget.dataset.idx
+      currentTab: currentTab
+    });
+
+    wx.request({
+      url: app.globalData.urlPath + "/message/" + currentTab,
+      header: {
+        "Authorization": app.globalData.access_token
+      },
+      success: res => {
+        if (res.data.code === 200) {
+          var data = res.data.data;
+          if (currentTab == 1) {
+            that.setData({
+              messages: data
+            })
+          } else {
+            that.setData({
+              audioMsg: data
+            })
+          }
+
+        }
+      }
     })
   },
 
-  toDetail: function() {
-    wx.navigateTo({
-      url: '/pages/message/detail/detail',
+  toDetail: function(e) {
+    var price = e.currentTarget.dataset.price;
+    var flowerType = e.currentTarget.dataset.flower_type;
+
+    var flower = flowerType == "FLOWER" ? "花" : "蛋";
+
+    wx.showModal({
+      title: '提示',
+      content: '需要消耗' + price + flower,
+      success(res) {
+        if (res.confirm) {
+          wx.request({
+            url: '',
+
+            success: res => {
+              wx.navigateTo({
+                url: '/pages/message/detail/detail',
+              })
+            }
+          })
+          
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
     })
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
+    var that = this;
+    var currentTab = that.data.currentTab;
+    wx.request({
+      url: app.globalData.urlPath + "/message/" + currentTab,
+      header: {
+        "Authorization": app.globalData.access_token
+      },
+      success: res => {
+        if (res.data.code === 200) {
+          var data = res.data.data;
+          that.setData({
+            messages: data
+          })
+        }
+      }
+    })
 
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

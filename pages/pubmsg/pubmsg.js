@@ -137,6 +137,7 @@ Page({
       flowerCount: flowerCount,
       modalShow: false
     })
+    wx.setStorageSync("needPrice", price);
   },
 
   /**

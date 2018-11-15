@@ -1,6 +1,6 @@
 <!--pages/userlist/userlist.wxml-->
 <view class="section">
-  <view class="item" wx:for="{{friends}}">
+  <view class="item" wx:for="{{friends}}" wx:key="{{id}}">
 
     <view style='display: flex; align-items: center'>
       <image class="avatar" src="{{item.avatarUrl}}"></image>

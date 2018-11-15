@@ -8,11 +8,11 @@
   <view class="egg-flower">
     <view class="box">
       <image></image>
-      <text>30朵</text>
+      <text>{{flowerCount}}朵</text>
     </view>
     <view class="box">
       <image></image>
-      <text>20颗</text>
+      <text>{{eggCount}}颗</text>
     </view>
   </view>
 </view>

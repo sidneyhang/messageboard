@@ -34,6 +34,7 @@ App({
                   console.log(data);
                   if (data.code === 200) {
                     getApp().globalData.access_token = data.data.access_token;
+                    getApp().globalData.openid = data.data.openid;
                     wx.setStorageSync("userInfo", data.data.userInfo);
                   }
                 }
@@ -107,6 +108,6 @@ App({
     openid: 0,
     wx_url_1: 'https://api.weixin.qq.com/sns/jscode2session?appid=wxa30da721db587413&secret=68bcec49a3919e51521c9c02a1fcdba2&js_code=',
     wx_url_2: '&grant_type=authorization_code',
-    urlPath: 'http://localhost:9000/expresslove/api/v1'
+    urlPath: 'http://192.168.31.107:9000/expresslove/api/v1'
   }
 })
