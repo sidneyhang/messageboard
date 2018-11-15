@@ -2,19 +2,6 @@
 var defaultPrice = 0;
 var app = getApp();
 const recorderManager = wx.getRecorderManager();
-
-recorderManager.onStart(() => {
-  console.log('recorder start')
-});
-
-const options = {
-  duration: 10000,
-  sampleRate: 44100,
-  numberOfChannels: 1,
-  encodeBitRate: 192000,
-  format: 'aac',
-  frameSize: 50
-}
 Page({
 
   /**
@@ -27,7 +14,10 @@ Page({
     modalShow: false,
     selPrice: defaultPrice,
     content: "",
-    historyMsg: {}
+    historyMsg: {},
+    recorderStatus: 0,
+    num: 0,
+    audio: ""
   },
 
   /**
@@ -35,7 +25,6 @@ Page({
    */
   onLoad: function(options) {
     wx.setStorageSync("needPrice", defaultPrice);
-
     var that = this;
 
     wx.request({
@@ -56,11 +45,68 @@ Page({
   },
 
   startRecorder: function(e) {
+    const options = {
+      duration: 10000,
+      sampleRate: 44100,
+      numberOfChannels: 1,
+      encodeBitRate: 192000,
+      format: 'aac',
+      frameSize: 50
+    }
+    var that = this;
+    this.setData({
+      recorderStatus: 1
+    });
     recorderManager.start(options);
+    recorderManager.onStart(() => {
+      console.log('recorder start')
+    });
+
+    that.data.setInter = setInterval(function () {              
+      var  numVal = that.data.num + 1;              
+      that.setData({
+        num: numVal
+      });              
+    }, 1000);
   },
-  pauseRecorder: function(e) {
-    console.log("stop")
+
+  stopRecorder: function(e) {
+    var that = this;
     recorderManager.stop();
+    clearInterval(that.data.setInter);
+
+    recorderManager.onStop((res) => {
+      that.setData({
+        audio: JSON.stringify(res)
+      })
+
+      wx.uploadFile({
+        url: app.globalData.urlPath + "/file/upload", //演示域名、自行配置
+        filePath: res.tempFilePath,
+        name: 'file',
+        header: {
+          "Authorization": app.globalData.access_token,
+          "Content-Type": "multipart/form-data"
+        },
+        formData: {
+          userId: app.globalData.openid //附加信息为用户ID
+        },
+        success: function(res) {
+          console.log(res);
+          wx.showToast({
+            title: '上传成功',
+            icon: 'success',
+            duration: 2000
+          })
+        },
+        fail: function(res) {
+          console.log(res);
+        },
+        complete: function(res) {
+
+        }
+      })
+    });
   },
 
   publishMsg: function() {
@@ -69,6 +115,7 @@ Page({
     var receiver = wx.getStorageSync("targetUser");
     var price = wx.getStorageSync("needPrice");
     var content = this.data.content;
+    var audio = this.data.audio;
 
     var postData = {
       type: parseInt(type),
@@ -76,6 +123,7 @@ Page({
       receiver: parseInt(receiver),
       price: parseFloat(price),
       content: content,
+      audioUrl: audio
     };
 
     wx.request({

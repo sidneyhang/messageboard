@@ -11,16 +11,17 @@
 </view>
 
 
-<view class="section" wx:if="{{currentTab == 1}}">
-  <textarea bindinput="contentInput" bindblur="bindTextAreaBlur" style='width:100%; height: 200px; background-color: white; font-size: 15px; padding: 15px 15px; box-sizing: border-box;' placeholder="消耗一朵花留言，说你想说的..." />
+<view class="section text-message" wx:if="{{currentTab == 1}}">
+  <textarea bindinput="contentInput" bindblur="bindTextAreaBlur" placeholder="消耗一朵花留言，说你想说的..." />
 </view>
 <view class="section recorder" wx:if="{{currentTab == 2}}">
-  <view class="box" style="">
-    <image src="/assets/images/message/recorder_back.png" bindtap="startRecorder" style="height: 174rpx; width: 174rpx"></image>
-    <image src="/assets/images/message/pause.png" class="pause" bindtap="stopRecorder"  style=""></image>
+  <view class="box">
+    <image src="/assets/images/message/recorder_back.png" style="height: 174rpx; width: 174rpx"></image>
+    <image src="/assets/images/message/pause.png" class="pause {{recorderStatus == 1 ? 'show' : 'hidden='}}" bindtap="stopRecorder"></image>
+    <view class="pause {{recorderStatus == 0 ? 'show' : 'hidden'}}" bindtap="startRecorder"></view>
   </view>
   <view>
-    <text>点击录音 0秒</text>
+    <text>点击录音 {{num}}秒</text>
   </view>
 </view>
 
