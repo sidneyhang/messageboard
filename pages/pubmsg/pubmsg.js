@@ -1,6 +1,20 @@
 // pages/pubmsg/pubmsg.js
 var defaultPrice = 0;
 var app = getApp();
+const recorderManager = wx.getRecorderManager();
+
+recorderManager.onStart(() => {
+  console.log('recorder start')
+});
+
+const options = {
+  duration: 10000,
+  sampleRate: 44100,
+  numberOfChannels: 1,
+  encodeBitRate: 192000,
+  format: 'aac',
+  frameSize: 50
+}
 Page({
 
   /**
@@ -39,6 +53,14 @@ Page({
         }
       }
     })
+  },
+
+  startRecorder: function(e) {
+    recorderManager.start(options);
+  },
+  pauseRecorder: function(e) {
+    console.log("stop")
+    recorderManager.stop();
   },
 
   publishMsg: function() {

@@ -16,8 +16,8 @@
 </view>
 <view class="section recorder" wx:if="{{currentTab == 2}}">
   <view class="box" style="">
-    <image src="/assets/images/message/recorder_back.png" style="height: 174rpx; width: 174rpx"></image>
-    <image src="/assets/images/message/pause.png" class="pause" style=""></image>
+    <image src="/assets/images/message/recorder_back.png" bindtap="startRecorder" style="height: 174rpx; width: 174rpx"></image>
+    <image src="/assets/images/message/pause.png" class="pause" bindtap="stopRecorder"  style=""></image>
   </view>
   <view>
     <text>点击录音 0秒</text>
