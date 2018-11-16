@@ -20,7 +20,7 @@
       </view>
     </view>
     <view>
-      <button class="show-btn" data-price="{{item.needFlower}}" data-flower_type="{{item.flowerType}}" bindtap="toDetail">去查看</button>
+      <button class="show-btn" data-id="{{item.id}}" data-price="{{item.needFlower}}" data-flower_type="{{item.flowerType}}" bindtap="toDetail">去查看</button>
     </view>
   </view>
 

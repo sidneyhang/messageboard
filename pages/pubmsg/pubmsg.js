@@ -2,13 +2,14 @@
 var defaultPrice = 0;
 var app = getApp();
 const recorderManager = wx.getRecorderManager();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    currentTab: 1,
+    currentTab: 2,
     cusPrice: "",
     flowerCount: "免费",
     modalShow: false,
@@ -17,7 +18,8 @@ Page({
     historyMsg: {},
     recorderStatus: 0,
     num: 0,
-    audio: ""
+    audio: {},
+    pathname: ""
   },
 
   /**
@@ -38,7 +40,6 @@ Page({
           that.setData({
             historyMsg: data
           });
-          console.log(data);
         }
       }
     })
@@ -72,12 +73,13 @@ Page({
 
   stopRecorder: function(e) {
     var that = this;
-    recorderManager.stop();
     clearInterval(that.data.setInter);
+    recorderManager.stop();
 
     recorderManager.onStop((res) => {
+      console.log("stoped");
       that.setData({
-        audio: JSON.stringify(res)
+        audio: res
       })
 
       wx.uploadFile({
@@ -92,15 +94,26 @@ Page({
           userId: app.globalData.openid //附加信息为用户ID
         },
         success: function(res) {
-          console.log(res);
-          wx.showToast({
-            title: '上传成功',
-            icon: 'success',
-            duration: 2000
-          })
+          var response = JSON.parse(res.data);
+          if (response.code === 200) {
+            var data = response.data;
+            console.log(data.pathname);
+            that.setData({
+              pathname: data.pathname
+            });
+            wx.showToast({
+              title: '上传成功',
+              icon: 'success',
+              duration: 2000
+            })
+          }
         },
         fail: function(res) {
-          console.log(res);
+          wx.showToast({
+            title: '上传失败',
+            icon: 'error',
+            duration: 2000
+          })
         },
         complete: function(res) {
 
@@ -116,6 +129,7 @@ Page({
     var price = wx.getStorageSync("needPrice");
     var content = this.data.content;
     var audio = this.data.audio;
+    audio.pathname = this.data.pathname;
 
     var postData = {
       type: parseInt(type),
@@ -123,7 +137,7 @@ Page({
       receiver: parseInt(receiver),
       price: parseFloat(price),
       content: content,
-      audioUrl: audio
+      audioUrl: JSON.stringify(audio)
     };
 
     wx.request({
