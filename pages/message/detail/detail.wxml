@@ -1,7 +1,7 @@
 <!--pages/message/detail/detail.wxml-->
 <view class="section">
   <view class="title">
-    <image class="avatar"></image>
+    <image class="avatar" src="{{msg.avatarUrl}}"></image>
     <view class="name-box">
       <view class="name">
         <text>{{msg.nickName}} 向你发起了表白[{{msg.category}}]</text>

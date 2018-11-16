@@ -16,6 +16,7 @@ Page({
   changeTab: function(e) {
     var that = this;
     var currentTab = e.currentTarget.dataset.idx;
+    console.log(currentTab);
     that.setData({
       currentTab: currentTab
     });
@@ -46,7 +47,7 @@ Page({
   toDetail: function(e) {
     var id = e.currentTarget.dataset.id;
 
-    if (this.data.currentTab === 1) {
+    if (this.data.currentTab == 1) {
       var price = e.currentTarget.dataset.price;
       var flowerType = e.currentTarget.dataset.flower_type;
       var flower = flowerType == "FLOWER" ? "花" : "蛋";

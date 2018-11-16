@@ -48,6 +48,11 @@ Page({
       success: res => {
         console.log(res);
         if (res.data.code === 200) {
+          wx.showToast({
+            title: '领取成功',
+            icon: 'success',
+            duration: 2000
+          });
           this.setData({
             modalShow: false
           })

@@ -11,32 +11,21 @@
 </view>
 
 <view class="section time">
-  <view class="btn {{currentTime == 1 ? 'active': ''}}" data-idx="1" bindtap="changeTime">今日</view>
-  <view class="btn {{currentTime == 2 ? 'active': ''}}" data-idx="2" bindtap="changeTime">本周</view>
-  <view class="btn {{currentTime == 3 ? 'active': ''}}" data-idx="3" bindtap="changeTime">本月</view>
-  <view class="btn {{currentTime == 4 ? 'active': ''}}" data-idx="4" bindtap="changeTime">土豪榜</view>
+  <view class="btn {{currentTime == 'TODAY' ? 'active': ''}}" data-idx="TODAY" bindtap="changeTime">今日</view>
+  <view class="btn {{currentTime == 'WEEK' ? 'active': ''}}" data-idx="WEEK" bindtap="changeTime">本周</view>
+  <view class="btn {{currentTime == 'MONTH' ? 'active': ''}}" data-idx="MONTH" bindtap="changeTime">本月</view>
+  <view class="btn {{currentTime == 'ALL' ? 'active': ''}}" data-idx="ALL" bindtap="changeTime">土豪榜</view>
 </view>
 
 <view class="user-list">
-  <view class="item">
+  <view class="item" wx:for="{{rankList}}">
     <view class="left">
       <text>1</text>
-      <image></image>
-      <text class="name">李开复</text>
+      <image src="{{item.avatarUrl}}"></image>
+      <text class="name">{{item.nickName}}</text>
     </view>
     <view class="right">
-      <text>鲜花X5000</text>
-    </view>
-  </view>
-
-  <view class="item">
-    <view class="left">
-      <text>1</text>
-      <image></image>
-      <text class="name">李开复</text>
-    </view>
-    <view class="right">
-      <text>鲜花X5000</text>
+      <text>{{currentTab == 1 ? '花' : '蛋'}}X{{item.quantity}}</text>
     </view>
   </view>
 </view>

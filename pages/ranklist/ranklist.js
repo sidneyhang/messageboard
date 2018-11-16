@@ -1,4 +1,7 @@
 // pages/ranklist/ranklist.js
+
+var app = getApp();
+
 Page({
 
   /**
@@ -6,20 +9,48 @@ Page({
    */
   data: {
     currentTab: 1,
-    currentTime: 1
+    currentTime: 'TODAY',
+    rankList: {}
   },
 
   changeTab: function(e) {
     var that = this;
     that.setData({
       currentTab: e.currentTarget.dataset.idx
-    })
+    });
+
+    that.queryRankList();
   },
-  
-  changeTime: function (e) {
+
+  changeTime: function(e) {
     var that = this;
     that.setData({
       currentTime: e.currentTarget.dataset.idx
+    });
+
+    that.queryRankList();
+  },
+
+  queryRankList: function() {
+    var that = this;
+    var postData = {
+      period: that.data.currentTime
+    };
+
+    wx.request({
+      url: app.globalData.urlPath + "/ranklist/" + that.data.currentTab,
+      header: {
+        "Authorization": app.globalData.access_token,
+      },
+      data: postData,
+      success: res => {
+        console.log(res.data);
+        if (res.data.code === 200) {
+          that.setData({
+            rankList: res.data.data
+          })
+        }
+      }
     })
   },
 
@@ -27,35 +58,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
+    this.queryRankList();
   },
 
   /**
@@ -63,19 +66,6 @@ Page({
    */
   onPullDownRefresh: function() {
 
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
   }
+
 })
