@@ -32,3 +32,13 @@ page {
   font-size: 26rpx;
   margin-left: 16rpx;
 }
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.pub-msg {
+  display: flex;
+  align-items: center;
+}

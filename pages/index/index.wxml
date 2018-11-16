@@ -1,9 +1,9 @@
 <!--index.wxml-->
-<view style="height: 100%; display: flex; justify-content: center; align-content: center;">
+<view class="content">
   <view class="section">
-    <image style="width: 285px; height: 121px;" data-category="1" src="http://imgs.jinxiaoersh.com/FHhG8Jw4mk3QtfmWeC.png" bindtap="toUserList"></image>
-    <image style="width: 285px; height: 121px;" data-category="2" src="http://imgs.jinxiaoersh.com/TpNZYXy8TeBnwaRnRW.png" bindtap="toUserList"></image>
-    <image style="width: 285px; height: 121px;" data-category="3" src="http://imgs.jinxiaoersh.com/QnYMkrDkTthRAhedD2.png" bindtap="toUserList"></image>
-    <image style="width: 285px; height: 121px;" data-category="4" src="http://imgs.jinxiaoersh.com/ryhnAmazAbTFhwNEKR.png" bindtap="toUserList"></image>
+    <image class="sec-img" data-category="1" src="http://imgs.jinxiaoersh.com/FHhG8Jw4mk3QtfmWeC.png" bindtap="toUserList"></image>
+    <image class="sec-img" data-category="2" src="http://imgs.jinxiaoersh.com/TpNZYXy8TeBnwaRnRW.png" bindtap="toUserList"></image>
+    <image class="sec-img" data-category="3" src="http://imgs.jinxiaoersh.com/QnYMkrDkTthRAhedD2.png" bindtap="toUserList"></image>
+    <image class="sec-img" data-category="4" src="http://imgs.jinxiaoersh.com/ryhnAmazAbTFhwNEKR.png" bindtap="toUserList"></image>
   </view>
 </view>

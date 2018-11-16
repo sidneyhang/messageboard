@@ -1,11 +1,25 @@
 /**index.wxss**/
+
 page {
   height: 100%;
 }
+
+.content {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
 .section {
   padding: 40rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+}
+
+.section .sec-img {
+  width: 285px;
+  height: 121px;
 }

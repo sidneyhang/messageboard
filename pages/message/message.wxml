@@ -12,44 +12,44 @@
 
 <view class="section" wx:if="{{currentTab == 1}}">
   <view class="item" wx:for="{{messages}}" wx:key="id">
-    <view style="display: flex">
-      <image style='width: 72rpx; height: 72rpx; background-color: #000' src="{{item.avatarUrl}}"></image>
-      <view style="display: flex; flex-direction: column; margin-left: 18rpx; justify-content: space-between;">
-        <text style="font-size: 26rpx">{{item.time}}有人向你发起了表白【{{item.category}}】</text>
-        <text style="font-size: 20rpx; color: #C3C3D0">对方设置需要消耗{{item.flowerType == 'FLOWER' ? '花': '蛋'}}*{{item.needFlower}}查看该表白</text>
+    <view class="flex">
+      <image class="item-img" src="{{item.avatarUrl}}"></image>
+      <view class="item-content flex">
+        <text class="content-event">{{item.time}}有人向你发起了表白【{{item.category}}】</text>
+        <text class="content-consume">对方设置需要消耗{{item.flowerType == 'FLOWER' ? '花': '蛋'}}*{{item.needFlower}}查看该表白</text>
       </view>
     </view>
     <view>
-      <button style="width: 100rpx; height: 54rpx; font-size: 20rpx; background-color: #E48443; color: white; padding-left: 10rpx; padding-right: 10rpx" data-price="{{item.needFlower}}" data-flower_type="{{item.flowerType}}" bindtap="toDetail">去查看</button>
+      <button class="show-btn" data-price="{{item.needFlower}}" data-flower_type="{{item.flowerType}}" bindtap="toDetail">去查看</button>
     </view>
   </view>
 
-  <view style="display: flex; flex-direction: column; width: 100%;" wx:if="{{messages == 0}}">
-    <view style="display:flex; width:100%; height: 342rpx; justify-content: center;">
-      <image src="http://imgs.jinxiaoersh.com/RhYHpQmQsyY6neb6xB.png" style="width: 304rpx; height: 342rpx"></image>
+  <view class="item-none flex" wx:if="{{messages == 0}}">
+    <view class="item-images flex">
+      <image src="http://imgs.jinxiaoersh.com/RhYHpQmQsyY6neb6xB.png" class="item-img_none"></image>
     </view>
-    <text style="color: #c6cace; text-align: center; margin-top: 20rpx;">还没有消息哦~</text>
+    <text class="item-show_message">还没有消息哦~</text>
   </view>
 </view>
 
 <view class="section" wx:if="{{currentTab == 2}}">
   <view class="item" wx:for="{{audioMsg}}" wx:key="id">
-    <view style="display: flex">
-      <image style='width: 72rpx; height: 72rpx; background-color: #000'></image>
-      <view style="display: flex; flex-direction: column; margin-left: 18rpx; justify-content: space-between;">
-        <text style="font-size: 26rpx">{{item.time}}</text>
-        <text style="font-size: 20rpx; color: #C3C3D0">{{item.nickName}} 在同一时间段向你发起了表白[{{item.category}}]</text>
+    <view class="flex">
+      <image class="item-img"></image>
+      <view class="item-content flex">
+        <text class="content-event">{{item.time}}</text>
+        <text class="content-consume">{{item.nickName}} 在同一时间段向你发起了表白[{{item.category}}]</text>
       </view>
     </view>
     <view>
-      <button style="width: 100rpx; height: 54rpx; font-size: 20rpx; background-color: #E48443; color: white; padding-left: 10rpx; padding-right: 10rpx" bindtap="toDetail">免费查看</button>
+      <button class="show-btn" bindtap="toDetail">免费查看</button>
     </view>
   </view>
 
-  <view style="display: flex; flex-direction: column; width: 100%; margin-top: 200rpx;" wx:if="{{audioMsg == 0}}">
-    <view style="display:flex; width:100%; height: 342rpx; justify-content: center;">
-      <image src="http://imgs.jinxiaoersh.com/RhYHpQmQsyY6neb6xB.png" style="width: 304rpx; height: 342rpx"></image>
+  <view class="item-none mg-top200 flex" wx:if="{{audioMsg == 0}}">
+    <view class="item-images flex">
+      <image src="http://imgs.jinxiaoersh.com/RhYHpQmQsyY6neb6xB.png" class="item-img_none"></image>
     </view>
-    <text style="color: #c6cace; text-align: center; margin-top: 20rpx;">还没有消息哦~</text>
+    <text class="item-show_message">还没有消息哦~</text>
   </view>
 </view>

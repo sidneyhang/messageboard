@@ -16,7 +16,7 @@
 </view>
 <view class="section recorder" wx:if="{{currentTab == 2}}">
   <view class="box">
-    <image src="/assets/images/message/recorder_back.png" style="height: 174rpx; width: 174rpx"></image>
+    <image src="/assets/images/message/recorder_back.png" class="recorder_back"></image>
     <image src="/assets/images/message/pause.png" class="pause {{recorderStatus == 1 ? 'show' : 'hidden='}}" bindtap="stopRecorder"></image>
     <view class="pause {{recorderStatus == 0 ? 'show' : 'hidden'}}" bindtap="startRecorder"></view>
   </view>
@@ -25,16 +25,16 @@
   </view>
 </view>
 
-<view class="section" style="height: 44px; margin-top: 5px; display: flex; align-items: center; justify-content: space-between; padding: 0 13px;" bindtap="priceModal">
+<view class="section item-price" bindtap="priceModal">
   <text>设定对方查看该留言需要消耗的花</text>
   <text>{{flowerCount}} ></text>
 </view>
 
 
-<view class="section" style="margin-top: 10rpx; padding: 62rpx; ">
-  <button style='background-color: #E48443; color: white;' bindtap='publishMsg'>确认留言</button>
-  <scroll-view scroll-y style="height: 340rpx; margin-top: 68rpx;color: #C5CCDB; font-size: 26rpx">
-    <view style=''>
+<view class="section item-msg">
+  <button class="msg-btn" bindtap='publishMsg'>确认留言</button>
+  <scroll-view scroll-y class="history-msg">
+    <view>
       <text>历史留言表白</text>
     </view>
     <view wx:for="{{historyMsg}}">
@@ -51,7 +51,7 @@
 
     <view class="title">
       <view bindtap="closeModal">取消</view>
-      <view style="color: #E48443" bindtap="confirmPrice">确认</view>
+      <view class="confirm-btn" bindtap="confirmPrice">确认</view>
     </view>
     <view class="content">
       <view class="price">

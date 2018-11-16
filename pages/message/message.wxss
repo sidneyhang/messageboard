@@ -1,11 +1,11 @@
 /* pages/message/message.wxss */
+
 page {
   background-color: #f7f7f9;
   font-size: 15px;
 }
 
 .section {
-  
 }
 
 .navigator {
@@ -48,4 +48,65 @@ page {
   align-items: center;
   margin-bottom: 10rpx;
   justify-content: space-between;
+}
+
+.item .flex {
+  display: flex;
+}
+
+.item .flex .item-img {
+  width: 72rpx;
+  height: 72rpx;
+  background-color: #000;
+}
+
+.item .flex .item-content {
+  flex-direction: column;
+  margin-left: 18rpx;
+  justify-content: space-between;
+}
+
+.item-content .content-event {
+  font-size: 26rp;
+}
+
+.item-content .content-consume {
+  font-size: 20rpx;
+  color: #c3c3d0;
+}
+
+.item .show-btn {
+  width: 100rpx;
+  height: 54rpx;
+  font-size: 20rpx;
+  background-color: #e48443;
+  color: white;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+}
+
+.item-none {
+  flex-direction: column;
+  width: 100%;
+}
+
+.mg-top200 {
+  margin-top: 200rpx;
+}
+
+.item-none .item-images {
+  width: 100%;
+  height: 342rpx;
+  justify-content: center;
+}
+
+.item-none .item-images .item-img_none {
+  width: 304rpx;
+  height: 342rpx;
+}
+
+.item-none .item-show_message {
+  color: #c6cace;
+  text-align: center;
+  margin-top: 20rpx;
 }
