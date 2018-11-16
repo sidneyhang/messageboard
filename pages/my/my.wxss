@@ -65,3 +65,57 @@ page {
   width: 54rpx;
   height: 54rpx;
 }
+
+.section {
+  background-color: white;
+}
+
+.show {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.item-sign {
+  height: 44px;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 13px;
+}
+
+.myModal {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #00000080;
+  z-index: 1000;
+}
+
+.myModal .box {
+  position: fixed;
+  top: 229rpx;
+  left: 124rpx;
+}
+
+.myModal .content {
+  padding: 0 44rpx;
+}
+
+.myModal .box image {
+  width: 502rpx;
+  height: 684rpx;
+}
+.myModal .box button{
+  position: absolute;
+  width: 400rpx;
+  top: 550rpx;
+  left: 60rpx;
+  background-color: #f6b37f;
+  color: #fff;
+  
+}

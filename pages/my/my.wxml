@@ -26,11 +26,18 @@
   </view>
 </view>
 
-<view class="section item">
+<view class="section item" bindtap="signModal">
   <view>
     <image></image>
   </view>
   <view>
-    <text>签到送花送蛋 ></text>
+    <text>签到送花送蛋></text>
+  </view>
+</view>
+
+<view class="myModal {{modalShow ? 'show' : 'hidden' }}">
+  <view class="box">
+    <image src='/assets/images/my/sign-success.png'></image>
+    <button bindtap="closeModal">免费领取</button>
   </view>
 </view>
