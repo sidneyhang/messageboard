@@ -148,7 +148,7 @@ page {
   color: #e48443;
 }
 
-.recorder_back {
+.recorder-back {
   height: 174rpx;
   width: 174rpx;
 }

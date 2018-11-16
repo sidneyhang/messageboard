@@ -100,12 +100,12 @@ page {
   justify-content: center;
 }
 
-.item-none .item-images .item-img_none {
+.item-none .item-images .item-img-none {
   width: 304rpx;
   height: 342rpx;
 }
 
-.item-none .item-show_message {
+.item-none .item-show-message {
   color: #c6cace;
   text-align: center;
   margin-top: 20rpx;

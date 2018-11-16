@@ -26,9 +26,9 @@
 
   <view class="item-none flex" wx:if="{{messages == 0}}">
     <view class="item-images flex">
-      <image src="http://imgs.jinxiaoersh.com/RhYHpQmQsyY6neb6xB.png" class="item-img_none"></image>
+      <image src="http://imgs.jinxiaoersh.com/RhYHpQmQsyY6neb6xB.png" class="item-img-none"></image>
     </view>
-    <text class="item-show_message">还没有消息哦~</text>
+    <text class="item-show-message">还没有消息哦~</text>
   </view>
 </view>
 
@@ -48,8 +48,8 @@
 
   <view class="item-none mg-top200 flex" wx:if="{{audioMsg == 0}}">
     <view class="item-images flex">
-      <image src="http://imgs.jinxiaoersh.com/RhYHpQmQsyY6neb6xB.png" class="item-img_none"></image>
+      <image src="http://imgs.jinxiaoersh.com/RhYHpQmQsyY6neb6xB.png" class="item-img-none"></image>
     </view>
-    <text class="item-show_message">还没有消息哦~</text>
+    <text class="item-show-message">还没有消息哦~</text>
   </view>
 </view>

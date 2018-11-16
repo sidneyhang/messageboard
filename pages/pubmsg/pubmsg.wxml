@@ -16,7 +16,7 @@
 </view>
 <view class="section recorder" wx:if="{{currentTab == 2}}">
   <view class="box">
-    <image src="/assets/images/message/recorder_back.png" class="recorder_back"></image>
+    <image src="/assets/images/message/recorder_back.png" class="recorder-back"></image>
     <image src="/assets/images/message/pause.png" class="pause {{recorderStatus == 1 ? 'show' : 'hidden='}}" bindtap="stopRecorder"></image>
     <view class="pause {{recorderStatus == 0 ? 'show' : 'hidden'}}" bindtap="startRecorder"></view>
   </view>
