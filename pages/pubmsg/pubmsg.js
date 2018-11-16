@@ -155,7 +155,7 @@ Page({
       success: res => {
         if (res.data.code === 200) {
           wx.navigateTo({
-            url: '/pages/pubsuccess/pubsuccess',
+            url: '/pages/pubmsg/pubsuccess/pubsuccess',
           })
         }
       },

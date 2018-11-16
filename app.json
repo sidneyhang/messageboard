@@ -5,7 +5,7 @@
     "pages/my/my",
     "pages/userlist/userlist",
     "pages/pubmsg/pubmsg",
-    "pages/pubsuccess/pubsuccess",
+    "pages/pubmsg/pubsuccess/pubsuccess",
     "pages/message/message",
     "pages/ranklist/ranklist",
     "pages/my/pay/pay",

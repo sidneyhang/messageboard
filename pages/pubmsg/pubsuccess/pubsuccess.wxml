@@ -1,0 +1,8 @@
+<!--pages/pubsuccess/pubsuccess.wxml-->
+<!-- <text>pages/pubmsg/pubsuccess/pubsuccess.wxml</text> -->
+<view class="item">
+  <image src="/assets/images/pubmsg/pubsuccess.png"></image>
+  <text class="item-success">恭喜您留言成功</text>
+  <text class="item-share">将小程序分享给更多的人</text>
+  <button>去分享</button>
+</view>
