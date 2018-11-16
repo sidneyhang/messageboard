@@ -31,4 +31,27 @@ page {
 
 .content {
   padding-left: 50rpx;
+  margin-top: 24rpx;
+}
+
+.audio {
+  width: 498rpx;
+  height: 84rpx;
+  background-color: #f8b551;
+  border-radius: 10rpx;
+  margin-top: 55rpx;
+  padding: 0 55rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.audio image {
+  width: 26rpx;
+  height: 37rpx;
+}
+
+.audio text {
+  font-size: 25rpx;
+  color: white;
 }

@@ -30,7 +30,7 @@ Page({
     var that = this;
 
     wx.request({
-      url: app.globalData.urlPath + "/message/history",
+      url: app.globalData.urlPath + "/messages/history",
       header: {
         "Authorization": app.globalData.access_token
       },
@@ -78,9 +78,14 @@ Page({
 
     recorderManager.onStop((res) => {
       console.log("stoped");
+      console.log(res);
+      var audioData = {
+        duration: res.duration,
+        fileSize: res.fileSize
+      };
       that.setData({
-        audio: res
-      })
+        audio: audioData
+      });
 
       wx.uploadFile({
         url: app.globalData.urlPath + "/file/upload", //演示域名、自行配置

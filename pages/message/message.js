@@ -21,7 +21,7 @@ Page({
     });
 
     wx.request({
-      url: app.globalData.urlPath + "/message/" + currentTab,
+      url: app.globalData.urlPath + "/messages/" + currentTab,
       header: {
         "Authorization": app.globalData.access_token
       },
@@ -44,47 +44,52 @@ Page({
   },
 
   toDetail: function(e) {
-    var price = e.currentTarget.dataset.price;
-    var flowerType = e.currentTarget.dataset.flower_type;
     var id = e.currentTarget.dataset.id;
 
-    var flower = flowerType == "FLOWER" ? "花" : "蛋";
+    if (this.data.currentTab === 1) {
+      var price = e.currentTarget.dataset.price;
+      var flowerType = e.currentTarget.dataset.flower_type;
+      var flower = flowerType == "FLOWER" ? "花" : "蛋";
 
-    wx.showModal({
-      title: '提示',
-      content: '需要消耗' + price + flower,
-      success(res) {
-        if (res.confirm) {
+      wx.showModal({
+        title: '提示',
+        content: '需要消耗' + price + flower,
+        success(res) {
+          if (res.confirm) {
+            wx.request({
+              url: app.globalData.urlPath + "/message/" + id + "/look",
+              method: "POST",
+              header: {
+                "Authorization": app.globalData.access_token
+              },
+              success: res => {
+                console.log(res);
+                if (res.data.code === 200) {
 
-          wx.request({
-            url: app.globalData.urlPath + "/message/" + id +"/look",
-            method: "POST",
-            header: {
-              "Authorization": app.globalData.access_token
-            },
-            success: res => {
-              console.log(res);
-              if (res.data.code === 200) {
-
-                wx.navigateTo({
-                  url: '/pages/message/detail/detail',
-                })
-              } else {
-                wx.showToast({
-                  title: res.data.message,
-                  icon: 'none',
-                  duration: 2000
-                });
-                return false;
+                  wx.navigateTo({
+                    url: '/pages/message/detail/detail?id=' + id,
+                  })
+                } else {
+                  wx.showToast({
+                    title: res.data.message,
+                    icon: 'none',
+                    duration: 2000
+                  });
+                  return false;
+                }
               }
-            }
-          })
+            })
 
-        } else if (res.cancel) {
-          console.log('用户点击取消')
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
         }
-      }
-    })
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/message/detail/detail?id=' + id,
+      })
+    }
 
   },
 
@@ -95,7 +100,7 @@ Page({
     var that = this;
     var currentTab = that.data.currentTab;
     wx.request({
-      url: app.globalData.urlPath + "/message/" + currentTab,
+      url: app.globalData.urlPath + "/messages/" + currentTab,
       header: {
         "Authorization": app.globalData.access_token
       },

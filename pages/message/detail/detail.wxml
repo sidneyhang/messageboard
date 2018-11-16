@@ -4,18 +4,18 @@
     <image class="avatar"></image>
     <view class="name-box">
       <view class="name">
-        <text>张三 向你发起了表白[想要你]</text>
+        <text>{{msg.nickName}} 向你发起了表白[{{msg.category}}]</text>
       </view>
       <view class="time">
-        <text>12: 30</text>
+        <text>{{msg.time}}</text>
       </view>
     </view>
   </view>
   <view class="content">
-    <text>
-    你知道吗？这个时候我也希望你同时在表白，有些话 \n
-  我不能直接和你说，但是我希望你明白，一切为了部落！
-  </text>
-    <text></text>
+    <text wx:if="{{msg.msgType == 1}}">{{msg.content}}</text>
+    <view wx:if="{{msg.msgType == 2}}" class="audio" bindtap="playAudio">
+    <image></image>
+    <text>{{duration}}秒</text>
+    </view>
   </view>
 </view>

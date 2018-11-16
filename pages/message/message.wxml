@@ -35,14 +35,14 @@
 <view class="section" wx:if="{{currentTab == 2}}">
   <view class="item" wx:for="{{audioMsg}}" wx:key="id">
     <view class="flex">
-      <image class="item-img"></image>
+      <image class="item-img" src="{{item.avatarUrl}}"></image>
       <view class="item-content flex">
         <text class="content-event">{{item.time}}</text>
         <text class="content-consume">{{item.nickName}} 在同一时间段向你发起了表白[{{item.category}}]</text>
       </view>
     </view>
     <view>
-      <button class="show-btn" bindtap="toDetail">免费查看</button>
+      <button class="show-btn" data-id="{{item.id}}" bindtap="toDetail">免费查看</button>
     </view>
   </view>
 
