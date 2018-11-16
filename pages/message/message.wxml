@@ -24,7 +24,7 @@
     </view>
   </view>
 
-  <view class="item-none flex" wx:if="{{messages == 0}}">
+  <view class="item-none mg-top200 flex" wx:if="{{messages == 0}}">
     <view class="item-images flex">
       <image src="http://imgs.jinxiaoersh.com/RhYHpQmQsyY6neb6xB.png" class="item-img-none"></image>
     </view>
