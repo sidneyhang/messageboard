@@ -119,6 +119,7 @@ page {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
 }
 
 .recorder .box {
@@ -133,6 +134,22 @@ page {
   position: absolute;
   top: 57rpx;
   left: 65.5rpx;
+}
+
+.recorder .box .stop {
+  height: 60rpx;
+  width: 60rpx;
+  position: absolute;
+  top: 57rpx;
+  left: 65.5rpx;
+}
+
+.recorder .delete {
+  position: absolute;
+  width: 40rpx;
+  height: 50rpx;
+  top: 80rpx;
+  left: 200rpx;
 }
 
 .text-message textarea {

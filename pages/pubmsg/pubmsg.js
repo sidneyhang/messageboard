@@ -3,6 +3,7 @@ var defaultPrice = 0;
 var app = getApp();
 const recorderManager = wx.getRecorderManager();
 
+
 Page({
 
   /**
@@ -17,9 +18,12 @@ Page({
     content: "",
     historyMsg: {},
     recorderStatus: 0,
+    recordStatusText: "点击录制",
     num: 0,
     audio: {},
-    pathname: ""
+    pathname: "",
+    category: "",
+    unit: ""
   },
 
   /**
@@ -28,6 +32,21 @@ Page({
   onLoad: function(options) {
     wx.setStorageSync("needPrice", defaultPrice);
     var that = this;
+
+    var category = wx.getStorageSync("category");
+    var unit = "";
+    if (category != "4") {
+      category = "花";
+      unit = "朵";
+    } else {
+      category = "蛋";
+      unit = "颗";
+    }
+
+    that.setData({
+      category: category,
+      unit: unit
+    })
 
     wx.request({
       url: app.globalData.urlPath + "/messages/history",
@@ -45,18 +64,28 @@ Page({
     })
   },
 
+  deleteRecord: function() {
+    this.setData({
+      pathname: "",
+      num: 0,
+      recorderStatus: 0,
+      recordStatusText: "点击录制"
+    })
+  },
+
   startRecorder: function(e) {
     const options = {
-      duration: 10000,
-      sampleRate: 44100,
+      duration: 60000,
+      sampleRate: 22050,
       numberOfChannels: 1,
-      encodeBitRate: 192000,
-      format: 'aac',
+      encodeBitRate: 128000,
+      format: 'mp3',
       frameSize: 50
     }
     var that = this;
     this.setData({
-      recorderStatus: 1
+      recorderStatus: 1,
+      recordStatusText: "录制中"
     });
     recorderManager.start(options);
     recorderManager.onStart(() => {
@@ -69,6 +98,32 @@ Page({
         num: numVal
       });              
     }, 1000);
+
+    recorderManager.onError(function () {
+      console.log("录制错误");
+      that.setData({
+        pathname: "",
+        num: 0,
+        recorderStatus: 0,
+        recordStatusText: "点击录制"
+      })
+
+      wx.showToast({
+        title: '录音失败，请重新录制',
+        icon: 'none',
+        duration: 3000
+      })
+    });
+  },
+
+  playAudio: function(e) {
+    var that = this;
+
+    const innerAudioContext = wx.createInnerAudioContext();
+    innerAudioContext.autoplay = true;
+    innerAudioContext.src = that.data.pathname;
+
+    innerAudioContext.play();
   },
 
   stopRecorder: function(e) {
@@ -84,7 +139,9 @@ Page({
         fileSize: res.fileSize
       };
       that.setData({
-        audio: audioData
+        audio: audioData,
+        recordStatusText: "录制完成",
+        recorderStatus: 2
       });
 
       wx.uploadFile({
@@ -145,6 +202,7 @@ Page({
       return false;
     }
 
+    console.log(audio.pathname);
     if (type == 2 && (audio.pathname == null || audio.pathname == "")) {
       wx.showToast({
         title: '需要先录音',

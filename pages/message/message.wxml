@@ -16,7 +16,8 @@
       <image class="item-img" src="{{item.avatarUrl}}"></image>
       <view class="item-content flex">
         <text class="content-event">{{item.time}}有人向你表白【{{item.category}}】</text>
-        <text class="content-consume" wx:if="{{item.read}}">已读</text>
+        <text class="content-consume" wx:if="{{item.needFlower == 0}}">免费留言</text>
+        <text class="content-consume" wx:elif="{{item.read}}">已读</text>
         <text class="content-consume" wx:else>对方设置需要消耗{{item.flowerType == 'FLOWER' ? '花': '蛋'}}*{{item.needFlower}}查看该表白</text>
       </view>
     </view>

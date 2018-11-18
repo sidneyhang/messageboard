@@ -22,7 +22,6 @@ Page({
         "Authorization" : app.globalData.access_token
       },
       success: res => {
-        console.log(res.data);
         if (res.data.code === 200) {
           that.setData({
             friends: res.data.data

@@ -12,21 +12,23 @@
 
 
 <view class="section text-message" wx:if="{{currentTab == 1}}">
-  <textarea bindinput="contentInput" bindblur="bindTextAreaBlur" placeholder="消耗一朵花留言，说你想说的..." />
+  <textarea bindinput="contentInput" bindblur="bindTextAreaBlur" placeholder="消耗一{{unit}}{{category}}留言，说你想说的..." />
 </view>
 <view class="section recorder" wx:if="{{currentTab == 2}}">
   <view class="box">
     <image src="/assets/images/message/recorder_back.png" class="recorder-back"></image>
     <image src="/assets/images/message/pause.png" class="pause {{recorderStatus == 1 ? 'show' : 'hidden='}}" bindtap="stopRecorder"></image>
     <view class="pause {{recorderStatus == 0 ? 'show' : 'hidden'}}" bindtap="startRecorder"></view>
+    <image src="/assets/images/message/triangle.png" class="stop {{recorderStatus == 2 ? 'show' : 'hidden='}}" bindtap="playAudio"></image>
+    <image src="/assets/images/message/delete.png" bindtap="deleteRecord" class="delete {{recorderStatus == 2 ? 'show' : 'hidden='}}"></image>
   </view>
   <view>
-    <text>点击录音 {{num}}秒</text>
+    <text>{{recordStatusText}} {{num}}秒</text>
   </view>
 </view>
 
 <view class="section item-price" bindtap="priceModal">
-  <text>设定对方查看该留言需要消耗的花</text>
+  <text>设定对方查看该留言需要消耗的{{category}}</text>
   <text>{{flowerCount}} ></text>
 </view>
 
@@ -56,17 +58,17 @@
     <view class="content">
       <view class="price">
         <view class="{{ selPrice == 0 ? 'active' : '' }}" data-price="0" bindtap="selectPrice">免费</view>
-        <view class="{{ selPrice == 1 ? 'active' : '' }}" data-price="1" bindtap="selectPrice">1朵花</view>
-        <view class="{{ selPrice == 10 ? 'active' : '' }}" data-price="10" bindtap="selectPrice">10朵花</view>
+        <view class="{{ selPrice == 1 ? 'active' : '' }}" data-price="1" bindtap="selectPrice">1{{unit}}{{category}}</view>
+        <view class="{{ selPrice == 10 ? 'active' : '' }}" data-price="10" bindtap="selectPrice">10{{unit}}{{category}}</view>
       </view>
 
       <view class="price">
-        <view class="{{ selPrice == 30 ? 'active' : '' }}" data-price="30" bindtap="selectPrice">30朵花</view>
-        <view class="{{ selPrice == 50 ? 'active' : '' }}" data-price="50" bindtap="selectPrice">50朵花</view>
+        <view class="{{ selPrice == 30 ? 'active' : '' }}" data-price="30" bindtap="selectPrice">30{{unit}}{{category}}</view>
+        <view class="{{ selPrice == 50 ? 'active' : '' }}" data-price="50" bindtap="selectPrice">50{{unit}}{{category}}</view>
         <view class="{{ selPrice == -1 ? 'active' : '' }}" data-price="-1" bindtap="selectPrice">自定义</view>
       </view>
       <view class="custom">
-        <input placeholder="请输入自定义数量" type="number" bindinput="priceInput" value="{{cusPrice}}" disabled="{{selPrice != -1}}"></input>
+        <input placeholder="请输入自定义数量" class="{{selPrice == -1 ? 'show': 'hidden'}}" type="number" bindinput="priceInput" value="{{cusPrice}}" disabled="{{selPrice != -1}}"></input>
       </view>
     </view>
   </view>

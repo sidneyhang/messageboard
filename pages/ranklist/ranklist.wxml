@@ -20,7 +20,7 @@
 <view class="user-list">
   <view class="item" wx:for="{{rankList}}">
     <view class="left">
-      <text>1</text>
+      <text>{{item.serialNumber}}</text>
       <image src="{{item.avatarUrl}}"></image>
       <text class="name">{{item.nickName}}</text>
     </view>

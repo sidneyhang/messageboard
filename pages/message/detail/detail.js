@@ -23,7 +23,6 @@ Page({
         "Authorization": app.globalData.access_token
       },
       success: res => {
-        console.log(res.data);
         if (res.data.code === 200) {
           var data = res.data.data;
           that.setData({
