@@ -21,7 +21,8 @@ Page({
     })
   },
 
-  onLoad: function () {
+  onLoad: function (option) {
+    console.log(option);
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

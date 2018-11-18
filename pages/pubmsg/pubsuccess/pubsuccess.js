@@ -1,4 +1,5 @@
 // pages/pubsuccess/pubsuccess.js
+var app = getApp();
 Page({
 
   /**
@@ -61,6 +62,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: '分享给好友',
+      desc: '',
+      path: '/pages/index/index?shareUser=' + app.globalData.openid
+    }
   }
 })

@@ -8,7 +8,7 @@
     </view>
 
     <view class="pub-msg">
-      <button type="primary" class='btn' data-userId="{{item.id}}" bindtap='toPubMsg'> 去留言 </button>
+      <button class='btn' data-userId="{{item.id}}" bindtap='toPubMsg'> 去留言 </button>
     </view>
 
   </view>

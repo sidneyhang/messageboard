@@ -37,7 +37,7 @@
       },
       {
         "selectedIconPath": "assets/images/icon-user-green.png",
-        "iconPath": "assets/images/icon-user.png",
+        "iconPath": "assets/images/icon-ranklist.png",
         "pagePath": "pages/ranklist/ranklist",
         "text": "排行榜"
       },

@@ -10,7 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    currentTab: 2,
+    currentTab: 1,
     cusPrice: "",
     flowerCount: "免费",
     modalShow: false,
