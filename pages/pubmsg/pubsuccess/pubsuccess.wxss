@@ -1,35 +1,28 @@
 /* pages/pubmsg/pubsuccess/pubsuccess.wxss */
 
 .item {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 200rpx;
+  font-size: 32rpx;
 }
 
 .item image {
   width: 128rpx;
   height: 128rpx;
-  position: absolute;
-  top: 278rpx;
-  left: 311rpx;
 }
 
 .item .item-success {
-  position: absolute;
-  left: 240rpx;
-  top: 434rpx;
+  margin-top: 28rpx;
 }
 
-.item .item-share {
-  position: absolute;
-  left: 166rpx;
-  top: 490rpx;
-}
 .item button{
-  position: absolute;
+  margin-top: 119rpx;
   width: 390rpx;
   height: 100rpx;
-  font-size: 16rpx;
+  font-size: 32rpx;
   color: #fff;
   background-color: #f8b551;
-  top: 608rpx;
-  left: 179rpx;
+  padding: 10rpx 10rpx;
 }

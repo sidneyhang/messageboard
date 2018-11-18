@@ -136,6 +136,24 @@ Page({
     var audio = this.data.audio;
     audio.pathname = this.data.pathname;
 
+    if (type == 1 && (content == null || content.trim() == "")) {
+      wx.showToast({
+        title: '需要填写留言内容',
+        icon: 'none',
+        duration: 2000
+      });
+      return false;
+    }
+
+    if (type == 2 && (audio.pathname == null || audio.pathname == "")) {
+      wx.showToast({
+        title: '需要先录音',
+        icon: 'none',
+        duration: 2000
+      });
+      return false;
+    }
+
     var postData = {
       type: parseInt(type),
       category: parseInt(category),

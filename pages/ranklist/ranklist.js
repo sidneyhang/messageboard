@@ -44,7 +44,6 @@ Page({
       },
       data: postData,
       success: res => {
-        console.log(res.data);
         if (res.data.code === 200) {
           that.setData({
             rankList: res.data.data

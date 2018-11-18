@@ -16,11 +16,12 @@
       <image class="item-img" src="{{item.avatarUrl}}"></image>
       <view class="item-content flex">
         <text class="content-event">{{item.time}}有人向你表白【{{item.category}}】</text>
-        <text class="content-consume">对方设置需要消耗{{item.flowerType == 'FLOWER' ? '花': '蛋'}}*{{item.needFlower}}查看该表白</text>
+        <text class="content-consume" wx:if="{{item.read}}">已读</text>
+        <text class="content-consume" wx:else>对方设置需要消耗{{item.flowerType == 'FLOWER' ? '花': '蛋'}}*{{item.needFlower}}查看该表白</text>
       </view>
     </view>
     <view>
-      <button class="show-btn" data-id="{{item.id}}" data-price="{{item.needFlower}}" data-flower_type="{{item.flowerType}}" bindtap="toDetail">去查看</button>
+      <button class="show-btn" data-id="{{item.id}}" data-isread="{{item.read}}" data-price="{{item.needFlower}}" data-flower_type="{{item.flowerType}}" bindtap="toDetail">去查看</button>
     </view>
   </view>
 

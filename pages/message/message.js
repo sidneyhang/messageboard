@@ -16,7 +16,6 @@ Page({
   changeTab: function(e) {
     var that = this;
     var currentTab = e.currentTarget.dataset.idx;
-    console.log(currentTab);
     that.setData({
       currentTab: currentTab
     });
@@ -51,53 +50,61 @@ Page({
       var price = e.currentTarget.dataset.price;
       var flowerType = e.currentTarget.dataset.flower_type;
       var flower = flowerType == "FLOWER" ? "花" : "蛋";
+      var isRead = e.currentTarget.dataset.isread;
+      if (price > 0) {
+        if (!isRead) {
+          wx.showModal({
+            title: '提示',
+            content: '需要消耗' + price + flower,
+            success(res) {
+              if (res.confirm) {
+                wx.request({
+                  url: app.globalData.urlPath + "/message/" + id + "/look",
+                  method: "POST",
+                  header: {
+                    "Authorization": app.globalData.access_token
+                  },
+                  success: res => {
+                    if (res.data.code === 200) {
 
-      wx.showModal({
-        title: '提示',
-        content: '需要消耗' + price + flower,
-        success(res) {
-          if (res.confirm) {
-            wx.request({
-              url: app.globalData.urlPath + "/message/" + id + "/look",
-              method: "POST",
-              header: {
-                "Authorization": app.globalData.access_token
-              },
-              success: res => {
-                console.log(res);
-                if (res.data.code === 200) {
-
-                  wx.navigateTo({
-                    url: '/pages/message/detail/detail?id=' + id,
-                  })
-                } else {
-                  wx.showToast({
-                    title: res.data.message,
-                    icon: 'none',
-                    duration: 2000
-                  });
-                  return false;
-                }
+                      wx.navigateTo({
+                        url: '/pages/message/detail/detail?id=' + id,
+                      })
+                    } else {
+                      wx.showToast({
+                        title: res.data.message,
+                        icon: 'none',
+                        duration: 2000
+                      });
+                      return false;
+                    }
+                  }
+                })
+              } else if (res.cancel) {
+                return false;
               }
-            })
-
-          } else if (res.cancel) {
-            console.log('用户点击取消')
-          }
+            }
+          })
+        } else {
+          wx.navigateTo({
+            url: '/pages/message/detail/detail?id=' + id,
+          })
         }
-      })
+      } else {
+        wx.navigateTo({
+          url: '/pages/message/detail/detail?id=' + id,
+        })
+      }
     } else {
       wx.navigateTo({
         url: '/pages/message/detail/detail?id=' + id,
       })
     }
 
+
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function(options) {
+  getMessage: function () {
     var that = this;
     var currentTab = that.data.currentTab;
     wx.request({
@@ -114,6 +121,16 @@ Page({
         }
       }
     })
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function(options) {
+    var that = this;
+    var currentTab = that.data.currentTab;
+    
+    that.getMessage();
 
   },
 
@@ -128,7 +145,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    this.getMessage();
   },
 
   /**

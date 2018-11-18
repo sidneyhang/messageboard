@@ -15,17 +15,37 @@ Page({
   },
 
   onLoad: function() {
-
-    console.log(app.globalData);
     var userInfo = wx.getStorageSync("userInfo");
     var that = this;
-    that.setData({
-      avatarUrl: userInfo.avatarUrl,
-      nickName: userInfo.nickName,
-      flowerCount: userInfo.flowerCount,
-      eggCount: userInfo.eggCount
+    that.getUserInfo();
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function() {
+    this.getUserInfo();
+  },
+
+  getUserInfo: function() {
+    var that = this;
+    wx.request({
+      url: app.globalData.urlPath + "/user",
+      header: {
+        "Authorization": app.globalData.access_token
+      },
+      success: res => {
+        if (res.data.code === 200) {
+          var data = res.data.data;
+          that.setData({
+            avatarUrl: data.avatarUrl,
+            nickName: data.nickName,
+            flowerCount: data.flowerCount,
+            eggCount: data.eggCount
+          })
+        }
+      }
     })
-    console.log(this.data);
   },
 
   toPay: function() {
@@ -46,7 +66,6 @@ Page({
         "Authorization": app.globalData.access_token
       },
       success: res => {
-        console.log(res);
         if (res.data.code === 200) {
           wx.showToast({
             title: '领取成功',
