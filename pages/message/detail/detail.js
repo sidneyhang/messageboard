@@ -1,4 +1,5 @@
 // pages/message/detail/detail.js
+const innerAudioContext = wx.createInnerAudioContext();
 
 var app = getApp();
 Page({
@@ -8,15 +9,17 @@ Page({
    */
   data: {
     msg: {},
-    duration: 0
+    duration: 0,
+    setInter: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     var id = options.id;
     var that = this;
+
     wx.request({
       url: app.globalData.urlPath + "/message/" + id,
       header: {
@@ -36,35 +39,49 @@ Page({
           }
         }
       }
+    });
+
+
+    innerAudioContext.onEnded((res) => {
+      console.log("end");
+      console.log(that.data.msg.duration);
+      that.setData({
+        duration: that.data.msg.duration
+      });
+      clearInterval(that.data.setInter);
+    });
+
+    innerAudioContext.onStop((res) => {
+      console.log("stop");
+      that.setData({
+        duration: that.data.msg.duration
+      });
+      clearInterval(that.data.setInter);
     })
   },
 
   playAudio: function(e) {
     var that = this;
+    console.log(innerAudioContext.paused);
+    if (innerAudioContext.paused) {
+      innerAudioContext.autoplay = true;
+      innerAudioContext.src = that.data.msg.audioUrl;
+      innerAudioContext.obeyMuteSwitch = false;
+      innerAudioContext.play();
 
-    const innerAudioContext = wx.createInnerAudioContext();
-    innerAudioContext.autoplay = true;
-    innerAudioContext.src = that.data.msg.audioUrl;
-    innerAudioContext.obeyMuteSwitch = false;
+      that.data.setInter = setInterval(function () {
+        var numVal = that.data.duration - 1;
+        if (numVal < 0) {
+          return false;
+        }
+        that.setData({
+          duration: numVal
+        });
+      }, 1000);
+    } else {
+      innerAudioContext.stop();
+    }
 
-    innerAudioContext.play();
-
-    that.data.setInter = setInterval(function  () {
-      var numVal = that.data.duration - 1;
-      if (numVal < 0) {
-        return false;
-      }
-      that.setData({
-        duration: numVal
-      });
-    }, 1000);
-
-    innerAudioContext.onEnded((res) => {
-      clearInterval(that.data.setInter);
-      that.setData({
-        duration: that.data.msg.duration
-      });
-    });
   }
 
 })
