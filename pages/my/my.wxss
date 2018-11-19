@@ -19,7 +19,6 @@ page {
 .avatar-name image {
   width: 126rpx;
   height: 126rpx;
-  background-color: #000;
 }
 
 .avatar-name text {
@@ -36,6 +35,16 @@ page {
 .egg-flower .box {
   display: flex;
   flex-direction: column;
+   align-items: center;
+}
+
+.egg-flower .box .flower {
+  width: 50rpx;
+  height: 62rpx;
+}
+
+.egg-flower .box .flower {
+  
 }
 
 .egg-flower .box text {
@@ -43,8 +52,8 @@ page {
 }
 
 .egg-flower .box image {
-  width: 60rpx;
-  height: 60rpx;
+  width: 53rpx;
+  height: 53rpx;
 }
 
 .item {
@@ -61,7 +70,6 @@ page {
 }
 
 .item image {
-  background-color: black;
   width: 54rpx;
   height: 54rpx;
 }

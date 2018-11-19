@@ -45,6 +45,7 @@ Page({
     const innerAudioContext = wx.createInnerAudioContext();
     innerAudioContext.autoplay = true;
     innerAudioContext.src = that.data.msg.audioUrl;
+    innerAudioContext.obeyMuteSwitch = false;
 
     innerAudioContext.play();
 

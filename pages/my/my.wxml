@@ -7,11 +7,11 @@
 
   <view class="egg-flower">
     <view class="box">
-      <image></image>
+      <image class="flower" src="/assets/images/my/flower.png"></image>
       <text>{{flowerCount}}朵</text>
     </view>
     <view class="box">
-      <image></image>
+      <image class="egg" src="/assets/images/my/egg.png"></image>
       <text>{{eggCount}}颗</text>
     </view>
   </view>
@@ -19,7 +19,7 @@
 
 <view class="section item" bindtap="toPay">
   <view>
-    <image></image>
+    <image style='width:49rpx; height: 41rpx' src="/assets/images/my/wallet@2x.png"></image>
   </view>
   <view>
     <text>去充值 ></text>
@@ -28,7 +28,7 @@
 
 <view class="section item" bindtap="signModal">
   <view>
-    <image></image>
+    <image src="/assets/images/my/signin@2x.png"></image>
   </view>
   <view>
     <text>签到送花送蛋></text>
