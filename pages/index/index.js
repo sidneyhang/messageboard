@@ -23,6 +23,23 @@ Page({
 
   onLoad: function (option) {
     console.log(option);
+    if (option.shareUser != undefined && option.shareUser != null && option.shareUser != "") {
+      var postData = {
+        shareUser: option.shareUser
+      };
+      wx.request({
+        url: app.globalData.urlPath + "/friends/add",
+        method: "POST",
+        data: postData,
+        header: {
+          "Authorization": app.globalData.access_token
+        },
+        success: res => {
+          console.log(res.data);
+        }
+      })
+    }
+
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

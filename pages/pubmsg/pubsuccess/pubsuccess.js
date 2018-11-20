@@ -62,10 +62,12 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    var userInfo = wx.getStorageSync("userInfo");
+    console.log(userInfo);
     return {
       title: '分享给好友',
       desc: '',
-      path: '/pages/index/index?shareUser=' + app.globalData.openid
+      path: '/pages/index/index?shareUser=' + userInfo.id
     }
   }
 })
