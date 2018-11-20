@@ -2,7 +2,7 @@
 var defaultPrice = 0;
 var app = getApp();
 const recorderManager = wx.getRecorderManager();
-
+const innerAudioContext = wx.createInnerAudioContext();
 
 Page({
 
@@ -119,7 +119,6 @@ Page({
   playAudio: function(e) {
     var that = this;
 
-    const innerAudioContext = wx.createInnerAudioContext();
     innerAudioContext.autoplay = true;
     innerAudioContext.src = that.data.pathname;
 
