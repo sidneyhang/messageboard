@@ -44,6 +44,7 @@ Page({
   },
 
   toDetail: function(e) {
+    var that = this;
     var id = e.currentTarget.dataset.id;
 
     if (this.data.currentTab == 1) {
@@ -58,39 +59,20 @@ Page({
             content: '需要消耗' + price + flower,
             success(res) {
               if (res.confirm) {
-                wx.request({
-                  url: app.globalData.urlPath + "/message/" + id + "/look",
-                  method: "POST",
-                  header: {
-                    "Authorization": app.globalData.access_token
-                  },
-                  success: res => {
-                    if (res.data.code === 200) {
-
-                      wx.navigateTo({
-                        url: '/pages/message/detail/detail?id=' + id,
-                      })
-                    } else {
-                      wx.showToast({
-                        title: res.data.message,
-                        icon: 'none',
-                        duration: 2000
-                      });
-                      return false;
-                    }
-                  }
-                })
+                that.lookMessage(id, false);
               } else if (res.cancel) {
                 return false;
               }
             }
           })
         } else {
+          that.lookMessage(id), false;
           wx.navigateTo({
             url: '/pages/message/detail/detail?id=' + id,
           })
         }
       } else {
+        that.lookMessage(id, false);
         wx.navigateTo({
           url: '/pages/message/detail/detail?id=' + id,
         })
@@ -104,7 +86,33 @@ Page({
 
   },
 
-  getMessage: function () {
+  lookMessage: function(id, confirm) {
+    wx.request({
+      url: app.globalData.urlPath + "/message/" + id + "/look",
+      method: "POST",
+      header: {
+        "Authorization": app.globalData.access_token
+      },
+      success: res => {
+        if (res.data.code === 200) {
+          if (confirm) {
+            wx.navigateTo({
+              url: '/pages/message/detail/detail?id=' + id,
+            })
+          }
+        } else {
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 2000
+          });
+          return false;
+        }
+      }
+    })
+  },
+
+  getMessage: function() {
     var that = this;
     var currentTab = that.data.currentTab;
     wx.request({
@@ -129,7 +137,7 @@ Page({
   onLoad: function(options) {
     var that = this;
     var currentTab = that.data.currentTab;
-    
+
     that.getMessage();
 
   },

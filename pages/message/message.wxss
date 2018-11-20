@@ -113,3 +113,11 @@ page {
   text-align: center;
   margin-top: 20rpx;
 }
+
+.show {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}

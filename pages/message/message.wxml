@@ -13,7 +13,7 @@
 <view class="section" wx:if="{{currentTab == 1}}">
   <view class="item" wx:for="{{messages}}" wx:key="id">
     <view class="flex">
-      <image class="item-img" src="{{item.avatarUrl}}"></image>
+      <image class="item-img {{item.read || item.needFlower == 0 ? 'show': 'hidden'}}" src="{{item.avatarUrl}}"></image>
       <view class="item-content flex">
         <text class="content-event">{{item.time}}有人向你表白【{{item.category}}】</text>
         <text class="content-consume" wx:if="{{item.needFlower == 0}}">免费留言</text>
