@@ -112,6 +112,6 @@ App({
     // urlPath: 'http://localhost:9000/expresslove/api/v1'
     // urlPath: 'http://192.168.31.107:9000/expresslove/api/v1'
     // urlPath: 'http://192.168.1.130:9000/expresslove/api/v1'
-    urlPath: 'https://wxapi.jinxiaoertg.com/expresslove/api/v1'
+    urlPath: 'https://wxapi.floweggr.com/expresslove/api/v1'
   }
 })

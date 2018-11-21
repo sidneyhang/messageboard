@@ -13,8 +13,27 @@ Page({
 
   changePackage: function(e) {
     var id = e.currentTarget.dataset.packid;
+    console.log(id);
     this.setData({
       currentPack: id
+    })
+
+    var postData = {
+      packId: id
+    };
+    wx.request({
+      url: app.globalData.urlPath + "/prepay",
+      method: "POST",
+      data: postData,
+      header: {
+        "Authorization": app.globalData.access_token
+      },
+      success: res => {
+        console.log(res.data);
+        if (res.data === 200) {
+
+        }
+      }
     })
   },
 
