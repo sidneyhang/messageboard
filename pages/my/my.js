@@ -29,6 +29,7 @@ Page({
 
   getUserInfo: function() {
     var that = this;
+    var userInfo = wx.getStorageSync("userInfo");
     wx.request({
       url: app.globalData.urlPath + "/user",
       header: {
@@ -43,6 +44,11 @@ Page({
             flowerCount: data.flowerCount,
             eggCount: data.eggCount
           })
+          userInfo.avatarUrl = data.avatarUrl;
+          userInfo.nickName = data.nickName;
+          userInfo.flowerCount = data.flowerCount;
+          userInfo.eggCount = data.eggCount;
+          wx.setStorageSync("userInfo", userInfo);
         }
       }
     })
@@ -74,7 +80,8 @@ Page({
           });
           this.setData({
             modalShow: false
-          })
+          });
+          that.getUserInfo();
         } else {
           wx.showToast({
             title: res.data.message,

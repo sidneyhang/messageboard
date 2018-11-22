@@ -1,5 +1,7 @@
 // pages/my/pay/pay.js
 var app = getApp();
+const util = require('../../../utils/util.js');
+
 Page({
 
   /**
@@ -11,7 +13,7 @@ Page({
     eggs: {}
   },
 
-  changePackage: function(e) {
+  changePackage: util.throttle(function(e) {
     var id = e.currentTarget.dataset.packid;
     console.log(id);
     this.setData({
@@ -29,13 +31,47 @@ Page({
         "Authorization": app.globalData.access_token
       },
       success: res => {
-        console.log(res.data);
-        if (res.data === 200) {
-
+        if (res.data.code === 200) {
+          var data = res.data.data;
+          console.log(data);
+          wx.requestPayment({
+            'timeStamp': data.timeStamp,
+            'nonceStr': data.nonceStr,
+            'package': data.package_,
+            'signType': data.signType,
+            'paySign': data.paySign,
+            success: function(res) {
+              console.info(res);
+              wx.showToast({
+                title: '支付成功',
+                icon: 'success',
+                duration: 3000
+              });
+              wx.navigateBack({
+                delta: -1
+              })
+            },
+            fail: function(res) {
+              console.info(res);
+              if (res.errMsg == "requestPayment:fail cancel") {
+                wx.showToast({
+                  title: '取消支付',
+                  icon: 'none',
+                  duration: 2000
+                })
+              } else {
+                wx.showToast({
+                  title: '支付失败',
+                  icon: 'none',
+                  duration: 2000
+                })
+              }
+            }
+          })
         }
       }
     })
-  },
+  }),
 
   /**
    * 生命周期函数--监听页面加载

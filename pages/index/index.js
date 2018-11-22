@@ -11,17 +11,37 @@ Page({
   },
 
   toUserList: function(e) {
+    var userInfo = wx.getStorageSync("userInfo");
     var category = e.currentTarget.dataset.category;
-    console.log(category);
-
     wx.setStorageSync("category", category);
-
-    wx.navigateTo({
-      url: '/pages/userlist/userlist',
-    })
+    if (category == 4) {
+      if (userInfo.eggCount > 0) {
+        wx.navigateTo({
+          url: '/pages/userlist/userlist',
+        })
+      } else {
+        wx.showToast({
+          title: '花数量不足，请先去充值(提醒：签到可免费领取花和蛋)',
+          icon: 'none',
+          duration: 3000
+        })
+      }
+    } else {
+      if (userInfo.flowerCount > 0) {
+        wx.navigateTo({
+          url: '/pages/userlist/userlist',
+        })
+      } else {
+        wx.showToast({
+          title: '蛋数量不足，请先去充值(提醒：签到可免费领取花和蛋)',
+          icon: 'none',
+          duration: 3000
+        })
+      }
+    }
   },
 
-  onLoad: function (option) {
+  onLoad: function(option) {
     console.log(option);
     if (option.shareUser != undefined && option.shareUser != null && option.shareUser != "") {
       var postData = {
@@ -45,7 +65,7 @@ Page({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
-    } else if (this.data.canIUse){
+    } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
