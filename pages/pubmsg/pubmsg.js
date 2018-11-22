@@ -34,6 +34,7 @@ Page({
     var that = this;
 
     var category = wx.getStorageSync("category");
+    var categoryId = category;
     var unit = "";
     if (category != "4") {
       category = "花";
@@ -49,7 +50,7 @@ Page({
     })
 
     wx.request({
-      url: app.globalData.urlPath + "/messages/history",
+      url: app.globalData.urlPath + "/messages/history/" + categoryId,
       header: {
         "Authorization": app.globalData.access_token
       },
@@ -99,7 +100,7 @@ Page({
       });              
     }, 1000);
 
-    recorderManager.onError(function () {
+    recorderManager.onError(function() {
       console.log("录制错误");
       that.setData({
         pathname: "",
@@ -132,7 +133,6 @@ Page({
 
     recorderManager.onStop((res) => {
       console.log("stoped");
-      console.log(res);
       var audioData = {
         duration: res.duration,
         fileSize: res.fileSize
@@ -158,7 +158,6 @@ Page({
           var response = JSON.parse(res.data);
           if (response.code === 200) {
             var data = response.data;
-            console.log(data.pathname);
             that.setData({
               pathname: data.pathname
             });
@@ -201,7 +200,6 @@ Page({
       return false;
     }
 
-    console.log(audio.pathname);
     if (type == 2 && (audio.pathname == null || audio.pathname == "")) {
       wx.showToast({
         title: '需要先录音',
@@ -210,7 +208,6 @@ Page({
       });
       return false;
     }
-
     var postData = {
       type: parseInt(type),
       category: parseInt(category),
@@ -220,26 +217,40 @@ Page({
       audioUrl: JSON.stringify(audio)
     };
 
-    wx.request({
-      url: app.globalData.urlPath + "/message",
-      method: "POST",
-      header: {
-        "Authorization": app.globalData.access_token
-      },
-      data: postData,
-      success: res => {
-        if (res.data.code === 200) {
-          wx.navigateTo({
-            url: '/pages/pubmsg/pubsuccess/pubsuccess',
-          })
+    wx.showModal({
+      title: '确认留言',
+      content: '需要消耗1' + (category == 4 ? '颗蛋' : '朵花'),
+      success(res) {
+        if (res.confirm) {
+          wx.request({
+            url: app.globalData.urlPath + "/message",
+            method: "POST",
+            header: {
+              "Authorization": app.globalData.access_token
+            },
+            data: postData,
+            success: res => {
+              if (res.data.code === 200) {
+                wx.navigateTo({
+                  url: '/pages/pubmsg/pubsuccess/pubsuccess',
+                })
+              } else {
+                wx.showToast({
+                  title: res.data.message,
+                  icon: 'none',
+                  duration: 2000
+                })
+              }
+            },
+            error: res => {
+
+            }
+          });
+        } else if (res.cancel) {
+
         }
-      },
-      error: res => {
-
       }
-    });
-
-
+    })
   },
 
   contentInput: function(e) {

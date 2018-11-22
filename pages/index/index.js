@@ -21,7 +21,7 @@ Page({
         })
       } else {
         wx.showToast({
-          title: '花数量不足，请先去充值(提醒：签到可免费领取花和蛋)',
+          title: '需要一颗蛋，请先去充值(提醒：签到可免费领取花和蛋)',
           icon: 'none',
           duration: 3000
         })
@@ -33,7 +33,7 @@ Page({
         })
       } else {
         wx.showToast({
-          title: '蛋数量不足，请先去充值(提醒：签到可免费领取花和蛋)',
+          title: '需要一朵花，请先去充值(提醒：签到可免费领取花和蛋)',
           icon: 'none',
           duration: 3000
         })

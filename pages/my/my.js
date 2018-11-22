@@ -65,6 +65,7 @@ Page({
     })
   },
   closeModal: function(e) {
+    var that = this;
     wx.request({
       url: app.globalData.urlPath + "/signin",
       method: "POST",
