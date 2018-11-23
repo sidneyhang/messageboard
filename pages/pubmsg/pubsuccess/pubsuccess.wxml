@@ -3,7 +3,7 @@
 <view class="item">
   <image src="/assets/images/pubmsg/pubsuccess.png"></image>
   <text class="item-success">恭喜您留言成功</text>
-  <text>点击去分享将保存小程序二维码到相册</text>
+  <text>将小程序分享给更多的人</text>
   <button open-type="share">去分享</button>
   <!-- <button bindtap="share">去分享</button> -->
   <image src="{{qrcode}}" style="width: 430rpx; height: 430rpx;"></image>

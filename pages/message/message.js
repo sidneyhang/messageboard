@@ -59,7 +59,7 @@ Page({
             content: '需要消耗' + price + flower,
             success(res) {
               if (res.confirm) {
-                that.lookMessage(id, false);
+                that.lookMessage(id, true);
               } else if (res.cancel) {
                 return false;
               }
