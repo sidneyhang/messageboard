@@ -10,12 +10,56 @@ Page({
   data: {
     currentPack: 1,
     flowers: {},
-    eggs: {}
+    eggs: {},
+    cusPrice: '',
+    consumerId: 1,
+    consumer: [{
+        name: 1,
+        value: '花',
+        checked: true
+      },
+      {
+        name: 2,
+        value: '蛋'
+      }
+    ]
+
+  },
+  radioChange: function(e) {
+    console.log(e.detail.value);
+  },
+
+  priceInput: function(e) {
+    this.setData({
+      cusPrice: e.detail.value
+    });
+  },
+
+  recharge: function(e) {
+    var that = this;
+
+    var cusPrice = that.data.cusPrice;
+    var consumerId = that.data.consumerId;
+
+    if (cusPrice == "") {
+      wx.showToast({
+        title: '请输入充值金额',
+        icon: 'none',
+        duration: 2000
+      })
+      return false;
+    }
+    var postData = {
+      packId: 0,
+      price: parseInt(cusPrice),
+      consumer: parseInt(consumerId)
+    };
+
+    this.pay(postData);
   },
 
   changePackage: util.throttle(function(e) {
     var id = e.currentTarget.dataset.packid;
-    console.log(id);
     this.setData({
       currentPack: id
     })
@@ -23,6 +67,10 @@ Page({
     var postData = {
       packId: id
     };
+    this.pay(postData);
+  }),
+
+  pay: function(postData) {
     wx.request({
       url: app.globalData.urlPath + "/prepay",
       method: "POST",
@@ -40,7 +88,7 @@ Page({
             'package': data.package_,
             'signType': data.signType,
             'paySign': data.paySign,
-            success: function(res) {
+            success: function (res) {
               console.info(res);
               wx.showToast({
                 title: '支付成功',
@@ -51,7 +99,7 @@ Page({
                 delta: -1
               })
             },
-            fail: function(res) {
+            fail: function (res) {
               console.info(res);
               if (res.errMsg == "requestPayment:fail cancel") {
                 wx.showToast({
@@ -71,7 +119,7 @@ Page({
         }
       }
     })
-  }),
+  },
 
   /**
    * 生命周期函数--监听页面加载

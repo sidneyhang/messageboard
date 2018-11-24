@@ -11,12 +11,23 @@ Page({
     nickName: "",
     flowerCount: 0,
     eggCount: 0,
-    modalShow: false
+    modalShow: false,
+    isIOS: true
   },
 
   onLoad: function() {
     var userInfo = wx.getStorageSync("userInfo");
     var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log(res);
+        if (res.platform != "ios") {
+          that.setData({
+            isIOS: false
+          })
+        }
+      }
+    })
     that.getUserInfo();
   },
 

@@ -219,7 +219,7 @@ Page({
 
     wx.showModal({
       title: '确认留言',
-      content: '需要消耗1' + (category == 4 ? '颗蛋' : '朵花'),
+      content: '赠送给对方1' + (category == 4 ? '颗蛋' : '朵花'),
       success(res) {
         if (res.confirm) {
           wx.request({
@@ -301,12 +301,13 @@ Page({
 
   confirmPrice: function(e) {
     var price = wx.getStorageSync("needPrice");
-    var flowerCount = price + "朵";
+    var unit = this.data.unit;
+    var flowerCount = price + unit;
     if (price == "0") {
       flowerCount = "免费";
     } else if (price == "-1") {
       price = this.data.cusPrice;
-      flowerCount = price + "朵";
+      flowerCount = price + unit;
     }
     this.setData({
       flowerCount: flowerCount,

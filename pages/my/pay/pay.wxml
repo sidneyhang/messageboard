@@ -2,8 +2,7 @@
 <view class="section">
   <text class="header">充值花</text>
   <view class="box">
-    <view wx:key="{{item.id}}" wx:for="{{flowers}}" class="price-box {{currentPack == item.id ? 'active': ''}}"  
-    data-packid="{{item.id}}" bindtap="changePackage">
+    <view wx:key="{{item.id}}" wx:for="{{flowers}}" class="price-box {{currentPack == item.id ? 'active': ''}}" data-packid="{{item.id}}" bindtap="changePackage">
       <text class="buds-number">{{item.flower}}朵花</text>
       <text class="price">售价{{item.originalPrice}}元</text>
     </view>
@@ -13,10 +12,24 @@
 <view class="section">
   <text class="header">充值蛋</text>
   <view class="box">
-    <view wx:key="{{item.id}}" wx:for="{{eggs}}" class="price-box {{currentPack == item.id ? 'active': ''}}"
-     data-packid="{{item.id}}" bindtap="changePackage">
+    <view wx:key="{{item.id}}" wx:for="{{eggs}}" class="price-box {{currentPack == item.id ? 'active': ''}}" data-packid="{{item.id}}" bindtap="changePackage">
       <text class="buds-number">{{item.flower}}朵蛋</text>
       <text class="price">售价{{item.originalPrice}}元</text>
+    </view>
+  </view>
+</view>
+
+<view class="section">
+  <text class="header">其他</text>
+  <view style="margin-top: 40rpx;">
+    <radio-group class="radio-group" bindchange="radioChange">
+      <label class="radio" wx:for="{{ consumer }}">
+        <radio value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
+      </label>
+    </radio-group>
+    <view class="custom">
+      <input placeholder="请输入充值金额 (1元得1朵花或1颗蛋)" type="number" bindinput="priceInput" value="{{cusPrice}}"></input>
+      <button class="msg-btn" bindtap='recharge'>充值</button>
     </view>
   </view>
 </view>
