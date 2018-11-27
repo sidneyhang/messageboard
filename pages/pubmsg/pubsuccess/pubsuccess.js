@@ -83,7 +83,8 @@ Page({
     return {
       title: '分享给好友',
       desc: '',
-      path: '/pages/index/index?shareUser=' + userInfo.id
+      path: '/pages/index/index?shareUser=' + userInfo.id,
+      imageUrl: '/assets/images/share.png'
     }
   }
 })

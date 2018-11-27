@@ -48,9 +48,10 @@ Page({
       category: category,
       unit: unit
     })
+    var receiver = wx.getStorageSync('targetUser');
 
     wx.request({
-      url: app.globalData.urlPath + "/messages/history/" + categoryId,
+      url: app.globalData.urlPath + "/messages/history/" + categoryId + "?receiver=" + receiver,
       header: {
         "Authorization": app.globalData.access_token
       },
