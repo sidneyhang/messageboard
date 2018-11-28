@@ -10,6 +10,9 @@ Page({
   },
 
   /**
+   * <button class="show-btn" data-id="{{item.id}}" data-isread="{{item.read}}" data-price="{{item.needFlower}}" data-flower_type="{{item.flowerType}}" bindtap="toDetail">去查看</button>
+   * <button class="show-btn" data-id="{{item.id}}" data-isread="{{item.read}}" data-price="{{item.needFlower}}" data-flower_type="{{item.flowerType}}" bindtap="toDetail">去查看</button>
+   * <button class="show-btn" data-id="{{item.id}}" data-isread="{{item.read}}" data-price="{{item.needFlower}}" data-flower_type="{{item.flowerType}}" bindtap="toDetail">去查看</button>
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {

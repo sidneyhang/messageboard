@@ -54,6 +54,18 @@ page {
   display: flex;
 }
 
+.item .align-center {
+  align-items: center;
+}
+
+.item .row {
+  flex-direction: row;
+}
+
+.item .row button {
+  margin-left: 10rpx;
+}
+
 .item .flex .item-img {
   width: 72rpx;
   height: 72rpx;

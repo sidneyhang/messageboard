@@ -4,10 +4,17 @@ const app = getApp()
 
 Page({
   data: {
+    showRole: false
     // motto: 'Hello World',
     // userInfo: {},
     // hasUserInfo: false,
     // canIUse: wx.canIUse('button.open-type.getUserInfo')
+  },
+
+  changeRole: function(e) {
+    this.setData({
+      showRole: !this.data.showRole
+    })
   },
 
   toUserList: function(e) {

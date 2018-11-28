@@ -7,3 +7,14 @@
     <image class="sec-img" data-category="4" src="http://imgs.jinxiaoersh.com/ryhnAmazAbTFhwNEKR.png" bindtap="toUserList"></image>
   </view>
 </view>
+<button bindtap='changeRole'>规则</button>
+<view class="popovers-body {{showRole ? 'show': 'hidden'}}">
+  <view class='popover-down'>
+    <view class='popover'>
+      <view class='popover-content'>
+        <text>划重点 \n 1、表白提醒：每天早、晚10点，系统推送过去12小时内对你的所有表白。\n 2、即时匹配：双方在同一时间段内互相表白（间隔2小时内），系统即时提醒双方，并且无论设置何种条件双方均能免费互看留言。\n 3、排行榜：按收到的花、蛋（即被表白的次数多少）排序，土豪榜按充值金额排序。\n 4、所有消息提醒24小时后自动消失。</text>
+      </view>
+    </view>
+    <view class='triangle top'></view>
+  </view>
+</view>

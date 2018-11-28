@@ -13,7 +13,7 @@
   <text class="header">充值蛋</text>
   <view class="box">
     <view wx:key="{{item.id}}" wx:for="{{eggs}}" class="price-box {{currentPack == item.id ? 'active': ''}}" data-packid="{{item.id}}" bindtap="changePackage">
-      <text class="buds-number">{{item.flower}}朵蛋</text>
+      <text class="buds-number">{{item.flower}}颗蛋</text>
       <text class="price">售价{{item.originalPrice}}元</text>
     </view>
   </view>

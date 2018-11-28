@@ -20,23 +20,36 @@ Page({
       currentTab: currentTab
     });
 
-    wx.request({
-      url: app.globalData.urlPath + "/messages/" + currentTab,
-      header: {
-        "Authorization": app.globalData.access_token
-      },
+    that.getMessage();
+  },
+
+  deleteMsg: function(e) {
+    var that = this;
+    var id = e.currentTarget.dataset.id;
+
+    wx.showModal({
+      title: '删除消息',
+      content: '确认删除该消息?',
       success: res => {
-        if (res.data.code === 200) {
-          var data = res.data.data;
-          if (currentTab == 1) {
-            that.setData({
-              messages: data
-            })
-          } else {
-            that.setData({
-              audioMsg: data
-            })
-          }
+        if (res.confirm) {
+          wx.request({
+            url: app.globalData.urlPath + "/message/" + id,
+            method: "DELETE",
+            header: {
+              "Authorization": app.globalData.access_token
+            },
+            success: res => {
+              if (res.data.code === 200) {
+                that.getMessage();
+                wx.showToast({
+                  title: '删除成功!',
+                  icon: "success",
+                  duration: 2000
+                })
+              }
+            }
+          })
+        } else {
 
         }
       }
@@ -121,11 +134,18 @@ Page({
         "Authorization": app.globalData.access_token
       },
       success: res => {
+        
         if (res.data.code === 200) {
           var data = res.data.data;
-          that.setData({
-            messages: data
-          })
+          if (currentTab == 1) {
+            that.setData({
+              messages: data
+            })
+          } else {
+            that.setData({
+              audioMsg: data
+            })
+          }
         }
       }
     })
