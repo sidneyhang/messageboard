@@ -7,7 +7,7 @@
     <image class="sec-img" data-category="4" src="http://imgs.jinxiaoersh.com/ryhnAmazAbTFhwNEKR.png" bindtap="toUserList"></image>
   </view>
 </view>
-<button bindtap='changeRole'>规则</button>
+<view class='role' bindtap='changeRole'>规则</view>
 <view class="popovers-body {{showRole ? 'show': 'hidden'}}">
   <view class='popover-down'>
     <view class='popover'>

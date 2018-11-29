@@ -91,7 +91,7 @@ page {
 
 .triangle.top {
   top: -20rpx;
-  margin-left: 102rpx;
+  margin-left: 22rpx;
   border-bottom-color: #999;
   border-bottom-color: rgba(0, 0, 0, 0.25);
   border-top-width: 0;
@@ -107,16 +107,19 @@ page {
   border-bottom-color: #fff;
 }
 
-button {
+.role {
   /* background-color: #e48443; */
-  background-color: white;
-  border-color: #999;
+  background: url('http://imgs.jinxiaoersh.com/3Ka72wKnP6kGeQmEGD.jpg') no-repeat right;
+  background-size: cover;
   position: absolute;
-  left: 100rpx;
+  left: 0rpx;
   top: 0;
   width: 100rpx;
-  height: 50rpx;
-  font-size: 22rpx;
+  height: 58rpx;
+  font-size: 24rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 

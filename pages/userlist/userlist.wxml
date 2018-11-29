@@ -1,4 +1,7 @@
 <!--pages/userlist/userlist.wxml-->
+<view class="search">
+  <input type="text" bindinput='keywordInput' bindconfirm='getUserList' confirm-type="search" placeholder='搜索'></input>
+</view>
 <view class="section">
   <view class="item" wx:for="{{friends}}" wx:key="{{id}}">
 
@@ -8,7 +11,9 @@
     </view>
 
     <view class="pub-msg">
-      <button class='btn' data-userId="{{item.id}}" bindtap='toPubMsg'> 去留言 </button>
+      <button class="btn cancel" wx:if="{{item.attention}}" data-userId="{{item.id}}" bindtap='cancelAttention'> 取消 </button>
+      <button class="btn attention" wx:else data-userid="{{item.id}}" bindtap='attention'> 关注 </button>
+      <button class='btn' data-userid="{{item.id}}" bindtap='toPubMsg'> 去留言 </button>
     </view>
 
   </view>
