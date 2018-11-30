@@ -50,6 +50,7 @@ Page({
 
   onLoad: function(option) {
     console.log(option);
+
     if (option.shareUser != undefined && option.shareUser != null && option.shareUser != "") {
       var postData = {
         shareUser: option.shareUser
@@ -93,12 +94,37 @@ Page({
         }
       })
     }
+    this.countNoReadMsg();
+
   },
   getUserInfo: function(e) {
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
+    })
+  },
+
+  countNoReadMsg: function() {
+    var accessToken = wx.getStorageSync("access_token");
+    wx.request({
+      url: app.globalData.urlPath + "/messages/noread",
+      method: "GET",
+      header: {
+        "Authorization": accessToken
+      },
+      success: res => {
+        console.log(res);
+        if (res.data.code === 200) {
+          var noread = res.data.data.noread;
+          if (noread != 0) {
+            wx.setTabBarBadge({
+              index: 1,
+              text: noread.toString()
+            })
+          }
+        }
+      }
     })
   }
 })

@@ -72,28 +72,20 @@ Page({
             content: '需要消耗' + price + flower,
             success(res) {
               if (res.confirm) {
-                that.lookMessage(id, true);
+                that.lookMessage(id);
               } else if (res.cancel) {
                 return false;
               }
             }
           })
         } else {
-          that.lookMessage(id), false;
-          wx.navigateTo({
-            url: '/pages/message/detail/detail?id=' + id,
-          })
+          that.lookMessage(id);
         }
       } else {
-        that.lookMessage(id, false);
-        wx.navigateTo({
-          url: '/pages/message/detail/detail?id=' + id,
-        })
+        that.lookMessage(id);
       }
     } else {
-      wx.navigateTo({
-        url: '/pages/message/detail/detail?id=' + id,
-      })
+      that.lookMessage(id);
     }
 
 
@@ -108,11 +100,9 @@ Page({
       },
       success: res => {
         if (res.data.code === 200) {
-          if (confirm) {
-            wx.navigateTo({
-              url: '/pages/message/detail/detail?id=' + id,
-            })
-          }
+          wx.navigateTo({
+            url: '/pages/message/detail/detail?id=' + id,
+          })
         } else {
           wx.showToast({
             title: res.data.message,
@@ -134,7 +124,7 @@ Page({
         "Authorization": app.globalData.access_token
       },
       success: res => {
-        
+
         if (res.data.code === 200) {
           var data = res.data.data;
           if (currentTab == 1) {
@@ -144,6 +134,29 @@ Page({
           } else {
             that.setData({
               audioMsg: data
+            })
+          }
+        }
+      }
+    })
+  },
+
+  countNoReadMsg: function() {
+    var accessToken = wx.getStorageSync("access_token");
+    wx.request({
+      url: app.globalData.urlPath + "/messages/noread",
+      method: "GET",
+      header: {
+        "Authorization": accessToken
+      },
+      success: res => {
+        console.log(res);
+        if (res.data.code === 200) {
+          var noread = res.data.data.noread;
+          if (noread != 0) {
+            wx.setTabBarBadge({
+              index: 1,
+              text: noread.toString()
             })
           }
         }
@@ -174,6 +187,7 @@ Page({
    */
   onShow: function() {
     this.getMessage();
+    this.countNoReadMsg();
   },
 
   /**

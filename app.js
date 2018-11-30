@@ -22,7 +22,8 @@ App({
                 encryptedData: res.encryptedData,
                 iv: res.iv,
                 avatarUrl: res.userInfo.avatarUrl,
-                nickName: res.userInfo.nickName
+                nickName: res.userInfo.nickName,
+                gender: res.userInfo.gender
               };
               console.log(data);
 
@@ -37,6 +38,7 @@ App({
                     getApp().globalData.access_token = data.data.access_token;
                     getApp().globalData.openid = data.data.openid;
                     wx.setStorageSync("userInfo", data.data.userInfo);
+                    wx.setStorageSync("access_token", data.data.access_token);
                   }
                 }
               })
