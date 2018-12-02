@@ -1,5 +1,4 @@
 // pages/message/message.js
-
 var app = getApp();
 
 Page({
@@ -142,6 +141,7 @@ Page({
   },
 
   countNoReadMsg: function() {
+    var that = this;
     var accessToken = wx.getStorageSync("access_token");
     wx.request({
       url: app.globalData.urlPath + "/messages/noread",
@@ -152,12 +152,26 @@ Page({
       success: res => {
         console.log(res);
         if (res.data.code === 200) {
+          var currentNoread = wx.getStorageSync("noread");
           var noread = res.data.data.noread;
-          if (noread != 0) {
-            wx.setTabBarBadge({
-              index: 1,
-              text: noread.toString()
-            })
+          console.log(currentNoread);
+          if (currentNoread != 0) {
+            that.setData({
+              noread: noread
+            });
+            if (noread == 0) {
+              wx.hideTabBarRedDot({
+                index: 1,
+                success: res => {
+                  console.log('hidden');
+                }
+              })
+            } else {
+              wx.setTabBarBadge({
+                index: 1,
+                text: noread.toString()
+              })
+            }
           }
         }
       }

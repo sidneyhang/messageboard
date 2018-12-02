@@ -1,5 +1,5 @@
 // pages/ranklist/ranklist.js
-
+const util = require('../../utils/util.js');
 var app = getApp();
 
 Page({
@@ -65,6 +65,10 @@ Page({
    */
   onPullDownRefresh: function() {
 
+  },
+  
+  onShow: function() {
+    util.countNoReadMsg();
   }
 
 })

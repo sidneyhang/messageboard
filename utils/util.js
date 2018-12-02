@@ -32,8 +32,34 @@ function throttle(fn, gapTime) {
 
 }
 
+function countNoReadMsg() {
+  var accessToken = wx.getStorageSync("access_token");
+  wx.request({
+    url: getApp().globalData.urlPath + "/messages/noread",
+    method: "GET",
+    header: {
+      "Authorization": accessToken
+    },
+    success: res => {
+      console.log(res);
+      if (res.data.code === 200) {
+        var noread = res.data.data.noread;
+        var currentNoread = noread;
+        if (currentNoread != 0) {
+          wx.setStorageSync("noread", noread);
+          wx.setTabBarBadge({
+            index: 1,
+            text: noread.toString()
+          })
+        }
+      }
+    }
+  })
+}
+
 
 module.exports = {
   formatTime: formatTime,
-  throttle: throttle
+  throttle: throttle,
+  countNoReadMsg: countNoReadMsg
 }

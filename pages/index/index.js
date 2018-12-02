@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
-const app = getApp()
-
+const app = getApp();
+const util = require('../../utils/util.js');
 Page({
   data: {
     showRole: false
@@ -94,7 +94,7 @@ Page({
         }
       })
     }
-    this.countNoReadMsg();
+    util.countNoReadMsg();
 
   },
   getUserInfo: function(e) {
@@ -105,26 +105,8 @@ Page({
     })
   },
 
-  countNoReadMsg: function() {
-    var accessToken = wx.getStorageSync("access_token");
-    wx.request({
-      url: app.globalData.urlPath + "/messages/noread",
-      method: "GET",
-      header: {
-        "Authorization": accessToken
-      },
-      success: res => {
-        console.log(res);
-        if (res.data.code === 200) {
-          var noread = res.data.data.noread;
-          if (noread != 0) {
-            wx.setTabBarBadge({
-              index: 1,
-              text: noread.toString()
-            })
-          }
-        }
-      }
-    })
-  }
+  onShow: function () {
+    util.countNoReadMsg();
+  },
+
 })

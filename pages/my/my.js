@@ -1,5 +1,5 @@
 // pages/my/my.js
-
+const util = require('../../utils/util.js');
 var app = getApp();
 Page({
 
@@ -36,6 +36,7 @@ Page({
    */
   onShow: function() {
     this.getUserInfo();
+    util.countNoReadMsg();
   },
 
   getUserInfo: function() {
