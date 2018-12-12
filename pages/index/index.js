@@ -122,6 +122,10 @@ Page({
               index: 1,
               text: noread.toString()
             })
+          } else {
+            wx.hideTabBarRedDot({
+              index: 1,
+            })
           }
         }
       }

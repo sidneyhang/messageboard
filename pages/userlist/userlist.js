@@ -95,6 +95,10 @@ Page({
           that.setData({
             friends: res.data.data
           });
+        } else if (res.data.code === 1000) {
+          wx.navigateTo({
+            url: '/pages/login/login',
+          })
         }
       }
     })

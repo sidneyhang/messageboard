@@ -1,5 +1,5 @@
 <!--pages/login/login.wxml-->
-<view wx:if="{{canIUse}}">
+<view >
     <view class='header'>
         <image src='/assets/images/wx_login.png'></image>
     </view>
@@ -13,5 +13,4 @@
         授权登录
     </button>
 </view>
- 
-<view wx:else>请升级微信版本</view>
+<!-- <view wx:else>请升级微信版本</view> -->

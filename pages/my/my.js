@@ -60,6 +60,10 @@ Page({
           userInfo.flowerCount = data.flowerCount;
           userInfo.eggCount = data.eggCount;
           wx.setStorageSync("userInfo", userInfo);
+        } else if (res.data.code === 1000) {
+          wx.navigateTo({
+            url: '/pages/login/login',
+          })
         }
       }
     })

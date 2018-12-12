@@ -136,6 +136,10 @@ Page({
               audioMsg: data
             })
           }
+        } else if (res.data.code === 1000) {
+          wx.navigateTo({
+            url: '/pages/login/login',
+          })
         }
       }
     })
@@ -157,6 +161,10 @@ Page({
             wx.setTabBarBadge({
               index: 1,
               text: noread.toString()
+            })
+          } else {
+            wx.hideTabBarRedDot({
+              index: 1,
             })
           }
         }
