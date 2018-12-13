@@ -44,7 +44,6 @@ Page({
 
     innerAudioContext.onEnded((res) => {
       console.log("end");
-      console.log(that.data.msg.duration);
       that.setData({
         duration: that.data.msg.duration
       });
@@ -62,7 +61,6 @@ Page({
 
   playAudio: function(e) {
     var that = this;
-    console.log(innerAudioContext.paused);
     if (innerAudioContext.paused) {
       innerAudioContext.autoplay = true;
       innerAudioContext.src = that.data.msg.audioUrl;

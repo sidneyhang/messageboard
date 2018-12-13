@@ -26,7 +26,6 @@ Page({
 
   },
   radioChange: function(e) {
-    console.log(e.detail.value);
   },
 
   priceInput: function(e) {
@@ -81,7 +80,6 @@ Page({
       success: res => {
         if (res.data.code === 200) {
           var data = res.data.data;
-          console.log(data);
           wx.requestPayment({
             'timeStamp': data.timeStamp,
             'nonceStr': data.nonceStr,
@@ -89,7 +87,6 @@ Page({
             'signType': data.signType,
             'paySign': data.paySign,
             success: function (res) {
-              console.info(res);
               wx.showToast({
                 title: '支付成功',
                 icon: 'success',
@@ -100,7 +97,6 @@ Page({
               })
             },
             fail: function (res) {
-              console.info(res);
               if (res.errMsg == "requestPayment:fail cancel") {
                 wx.showToast({
                   title: '取消支付',
@@ -132,7 +128,6 @@ Page({
         "Authorization": app.globalData.access_token
       },
       success: res => {
-        console.log(res.data);
         if (res.data.code === 200) {
           that.setData({
             flowers: res.data.data.flowers,

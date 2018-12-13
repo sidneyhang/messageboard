@@ -41,6 +41,7 @@ Page({
             success: res => {
               if (res.data.code === 200) {
                 that.getMessage();
+                that.countNoReadMsg();
                 wx.showToast({
                   title: '删除成功!',
                   icon: "success",
@@ -124,7 +125,6 @@ Page({
         "Authorization": app.globalData.access_token
       },
       success: res => {
-
         if (res.data.code === 200) {
           var data = res.data.data;
           if (currentTab == 1) {
@@ -154,7 +154,6 @@ Page({
         "Authorization": accessToken
       },
       success: res => {
-        console.log(res);
         if (res.data.code === 200) {
           var noread = res.data.data.noread;
           if (noread != 0) {

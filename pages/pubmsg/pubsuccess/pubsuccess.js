@@ -28,7 +28,6 @@ Page({
         "Authorization": app.globalData.access_token
       },
       success: res => {
-        console.log(res.data);
         if (res.data.code === 200) {
           that.setData({
             qrcode: res.data.data.qrcode
@@ -39,7 +38,6 @@ Page({
           wx.downloadFile({
             url: imgSrc,
             success: function(res) {
-              console.log(res);
               //图片保存到本地
               wx.saveImageToPhotosAlbum({
                 filePath: res.tempFilePath,
@@ -51,7 +49,6 @@ Page({
                   })
                 },
                 fail: function(err) {
-                  console.log(err);
                   if (err.errMsg === "saveImageToPhotosAlbum:fail auth deny") {
                     console.log("当初用户拒绝，再次发起授权")
                     wx.openSetting({
@@ -67,7 +64,6 @@ Page({
                   }
                 },
                 complete(res) {
-                  console.log(res);
                 }
               })
             }
@@ -82,7 +78,6 @@ Page({
    */
   onShareAppMessage: function() {
     var userInfo = wx.getStorageSync("userInfo");
-    console.log(userInfo);
     return {
       title: '分享给好友',
       desc: '',
