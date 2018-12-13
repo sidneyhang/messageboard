@@ -49,7 +49,6 @@ Page({
   },
 
   onLoad: function(option) {
-    console.log(option);
 
     if (option.shareUser != undefined && option.shareUser != null && option.shareUser != "") {
       var postData = {
@@ -63,7 +62,6 @@ Page({
           "Authorization": app.globalData.access_token
         },
         success: res => {
-          console.log(res.data);
         }
       })
     }
@@ -106,7 +104,32 @@ Page({
   },
 
   onShow: function () {
-    util.countNoReadMsg();
+    this.countNoReadMsg();
   },
 
+  countNoReadMsg: function() {
+    var accessToken = wx.getStorageSync("access_token");
+    wx.request({
+      url: app.globalData.urlPath + "/messages/noread",
+      method: "GET",
+      header: {
+        "Authorization": accessToken
+      },
+      success: res => {
+        if (res.data.code === 200) {
+          var noread = res.data.data.noread;
+          if (noread != 0) {
+            wx.setTabBarBadge({
+              index: 1,
+              text: noread.toString()
+            })
+          } else {
+            wx.hideTabBarRedDot({
+              index: 1,
+            })
+          }
+        }
+      }
+    })
+  }
 })

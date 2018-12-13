@@ -12,7 +12,7 @@
 
 
 <view class="section text-message" wx:if="{{currentTab == 1}}">
-  <textarea bindinput="contentInput" bindblur="bindTextAreaBlur" placeholder="赠送给对方一{{unit}}{{category}}留言，说你想说的..." />
+  <textarea bindinput="contentInput" placeholder="赠送给对方一{{unit}}{{category}}留言，说你想说的..." />
 </view>
 <view class="section recorder" wx:if="{{currentTab == 2}}">
   <view class="box">

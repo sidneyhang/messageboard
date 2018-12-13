@@ -1,4 +1,5 @@
 // pages/login/login.js
+var app = getApp();
 Page({
   data: {
     //判断小程序的API，回调，参数，组件等是否在当前版本可用。
@@ -10,8 +11,6 @@ Page({
 
   },
   bindGetUserInfo: function(e) {
-    console.log(e.detail);
-    console.log(getApp().globalData);
     if (e.detail.userInfo) {
       //用户按了允许授权按钮
       var that = this;
@@ -22,7 +21,8 @@ Page({
         data: {
           code: getApp().globalData.code,
           nickName: e.detail.userInfo.nickName,
-          avatarUrl: e.detail.userInfo.avatarUrl
+          avatarUrl: e.detail.userInfo.avatarUrl,
+          openid: ''
         },
         success: function(res) {
           console.log(res);
@@ -68,6 +68,7 @@ Page({
         if (data.code === 200) {
           getApp().globalData.access_token = data.data.access_token;
           wx.setStorageSync("userInfo", data.data.userInfo);
+          wx.setStorageSync("access_token", data.data.access_token);
         }
         console.log(getApp().globalData);
       }

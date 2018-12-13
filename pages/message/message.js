@@ -40,6 +40,7 @@ Page({
             success: res => {
               if (res.data.code === 200) {
                 that.getMessage();
+                that.countNoReadMsg();
                 wx.showToast({
                   title: '删除成功!',
                   icon: "success",
@@ -123,7 +124,6 @@ Page({
         "Authorization": app.globalData.access_token
       },
       success: res => {
-
         if (res.data.code === 200) {
           var data = res.data.data;
           if (currentTab == 1) {
@@ -135,6 +135,10 @@ Page({
               audioMsg: data
             })
           }
+        } else if (res.data.code === 1000) {
+          wx.navigateTo({
+            url: '/pages/login/login',
+          })
         }
       }
     })
@@ -150,28 +154,18 @@ Page({
         "Authorization": accessToken
       },
       success: res => {
-        console.log(res);
         if (res.data.code === 200) {
           var currentNoread = wx.getStorageSync("noread");
           var noread = res.data.data.noread;
-          console.log(currentNoread);
-          if (currentNoread != 0) {
-            that.setData({
-              noread: noread
-            });
-            if (noread == 0) {
-              wx.hideTabBarRedDot({
-                index: 1,
-                success: res => {
-                  console.log('hidden');
-                }
-              })
-            } else {
-              wx.setTabBarBadge({
-                index: 1,
-                text: noread.toString()
-              })
-            }
+          if (noread != 0) {
+            wx.setTabBarBadge({
+              index: 1,
+              text: noread.toString()
+            })
+          } else {
+            wx.hideTabBarRedDot({
+              index: 1,
+            })
           }
         }
       }

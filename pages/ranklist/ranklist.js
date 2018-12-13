@@ -48,6 +48,10 @@ Page({
           that.setData({
             rankList: res.data.data
           })
+        } else if (res.data.code === 1000) {
+          wx.navigateTo({
+            url: '/pages/login/login',
+          })
         }
       }
     })
@@ -67,8 +71,34 @@ Page({
 
   },
   
-  onShow: function() {
-    util.countNoReadMsg();
+  onShow: function () {
+    this.countNoReadMsg();
+  },
+
+  countNoReadMsg: function () {
+    var accessToken = wx.getStorageSync("access_token");
+    wx.request({
+      url: app.globalData.urlPath + "/messages/noread",
+      method: "GET",
+      header: {
+        "Authorization": accessToken
+      },
+      success: res => {
+        if (res.data.code === 200) {
+          var noread = res.data.data.noread;
+          if (noread != 0) {
+            wx.setTabBarBadge({
+              index: 1,
+              text: noread.toString()
+            })
+          } else {
+            wx.hideTabBarRedDot({
+              index: 1,
+            })
+          }
+        }
+      }
+    })
   }
 
 })

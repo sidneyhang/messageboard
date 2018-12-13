@@ -36,7 +36,6 @@ Page({
   attention: function(e) {
     var that = this;
     var targetUser = e.currentTarget.dataset.userid;
-    console.log(targetUser);
     wx.request({
       url: app.globalData.urlPath + "/attention/" + parseInt(targetUser),
       method: "POST",
@@ -44,7 +43,6 @@ Page({
         "Authorization": app.globalData.access_token
       },
       success: res => {
-        console.log(res.data);
         if (res.data.code === 200) {
           that.getUserList();
           wx.showToast({
@@ -67,7 +65,6 @@ Page({
         "Authorization": app.globalData.access_token
       },
       success: res => {
-        console.log(res.data);
         if (res.data.code === 200) {
           that.getUserList();
           wx.showToast({
@@ -90,11 +87,14 @@ Page({
         "Authorization": app.globalData.access_token
       },
       success: res => {
-        console.log(res.data);
         if (res.data.code === 200) {
           that.setData({
             friends: res.data.data
           });
+        } else if (res.data.code === 1000) {
+          wx.navigateTo({
+            url: '/pages/login/login',
+          })
         }
       }
     })
